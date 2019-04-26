@@ -3,6 +3,7 @@ import Navigation from './index/Navigation';
 import Header from './index/Header';
 import About from './index/About';
 import Services from './index/Services';
+import Testimonials from './index/Testimonials';
 
 import '../emergency_electric.min.css';
 export class App extends Component {
@@ -13,6 +14,7 @@ export class App extends Component {
 				<Header />
 				<About />
 				<Services />
+				<Testimonials />
 			</div>
 		);
 	}

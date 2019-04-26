@@ -65,3 +65,21 @@ export const sendMessage = values => async dispatch => {
 	});
 	dispatch({ type: C.UPDATE_SERVER_RESPONSE, payload: response });
 };
+
+export const showMessageDisplay = value => {
+	return {
+		type    : C.SHOW_MESSAGE_DISPLAY,
+		payload : { messageDisplay: value },
+	};
+};
+
+export const updateMessageDisplay = (color, message, displayMessage) => {
+	return {
+		type    : C.UPDATE_MESSAGE_DISPLAY,
+		payload : {
+			messageDisplay : displayMessage,
+			variant        : color,
+			message        : message,
+		},
+	};
+};

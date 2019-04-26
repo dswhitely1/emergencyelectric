@@ -4,6 +4,7 @@ import Header from './index/Header';
 import About from './index/About';
 import Services from './index/Services';
 import Testimonials from './index/Testimonials';
+import Contact from './index/Contact';
 import Goals from './index/Goals';
 
 import '../emergency_electric.min.css';
@@ -17,6 +18,7 @@ export class App extends Component {
 				<Services />
 				<Testimonials />
 				<Goals />
+				<Contact />
 			</div>
 		);
 	}

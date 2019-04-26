@@ -6,6 +6,7 @@ import Services from './index/Services';
 import Testimonials from './index/Testimonials';
 import Contact from './index/Contact';
 import Goals from './index/Goals';
+import Footer from './index/Footer';
 
 import '../emergency_electric.min.css';
 export class App extends Component {
@@ -19,6 +20,7 @@ export class App extends Component {
 				<Testimonials />
 				<Goals />
 				<Contact />
+				<Footer />
 			</div>
 		);
 	}

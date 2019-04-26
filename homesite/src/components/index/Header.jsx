@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Scrollchor from 'react-scrollchor';
-import '../../emergency_electric.min.css';
+
 function Header() {
 	return (
 		<header className='ee-header-section d-flex'>

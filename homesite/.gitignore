@@ -24,3 +24,6 @@ yarn-error.log*
 
 #scss
 /src/scss
+
+#api
+/src/api

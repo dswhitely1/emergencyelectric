@@ -1,12 +1,30 @@
+// REACT
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+//REDUX
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reduxThunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+//import Reducers
+import reducers from './reducers';
+// Import Main App
 import App from './components/App';
-
-import * as serviceWorker from './serviceWorker';
-
+//CSS Sheet
 import './bootstrap.min.css';
-
-ReactDOM.render(<App />, document.getElementById('root'));
+//ServiceWorker
+import * as serviceWorker from './serviceWorker';
+// Creation of the Redux Store
+const store = createStore(
+	reducers,
+	composeWithDevTools(applyMiddleware(reduxThunk)),
+);
+// Render the Webpage
+ReactDOM.render(
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById('root'),
+);
 
 serviceWorker.unregister();

@@ -19,7 +19,9 @@ function Navigation() {
 				<Navbar.Collapse
 					id='navbar'
 					className='text-center justify-content-center flex-column-md'>
-					<Scrollchor className='d-lg-none shadow  nav-link text-light mr-0 font-weight-bold navbar-brand'>
+					<Scrollchor
+						className='d-lg-none shadow  nav-link text-light mr-0 font-weight-bold navbar-brand'
+						to='#page-top'>
 						Emergency Electric Inc
 					</Scrollchor>
 					<Scrollchor to='#page-top' className=' nav-link text-light'>
@@ -31,7 +33,9 @@ function Navigation() {
 					<Scrollchor to='#services' className=' nav-link text-light'>
 						Services
 					</Scrollchor>
-					<Scrollchor className='d-none d-lg-inline-block shadow  nav-link text-light mr-0 font-weight-bold navbar-brand'>
+					<Scrollchor
+						to='#page-top'
+						className='d-none d-lg-inline-block shadow  nav-link text-light mr-0 font-weight-bold navbar-brand'>
 						Emergency Electric Inc
 					</Scrollchor>
 					<Scrollchor to='#testimonials' className=' nav-link text-light'>

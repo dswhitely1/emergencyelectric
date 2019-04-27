@@ -1,17 +1,17 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-
+import Button from 'react-bootstrap/Button';
 import Scrollchor from 'react-scrollchor';
 function Navigation() {
 	return (
 		<Navbar
 			bg='success'
 			variant='dark'
-			expand='lg'
+			expand='xl'
 			fixed='top'
 			className='text-uppercase'>
-			<Container className='justify-content-center'>
+			<Container className='justify-content-center mb-md-2 mb-lg-0'>
 				<Navbar.Toggle
 					aria-controls='navbar'
 					className='navbar-toggler-right border=0'
@@ -48,6 +48,13 @@ function Navigation() {
 						Contact
 					</Scrollchor>
 				</Navbar.Collapse>
+				<Button
+					variant='outline-primary'
+					className='ml-auto'
+					size='sm'
+					href='tel:15027274923'>
+					502-727-4923
+				</Button>
 			</Container>
 		</Navbar>
 	);

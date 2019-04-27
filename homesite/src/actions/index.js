@@ -42,7 +42,10 @@ export const valueContactFormChange = (item, value) => {
 				payload : { email: value },
 			};
 		case 'subject':
-			return { type: C.CONTACT_FORM_VALIDATION, payload: { subject: value } };
+			return {
+				type: C.CONTACT_FORM_VALUE_CHANGE_SU,
+				payload: { subject: value },
+			};
 		case 'message':
 			return {
 				type    : C.CONTACT_FORM_VALUE_CHANGE_MG,

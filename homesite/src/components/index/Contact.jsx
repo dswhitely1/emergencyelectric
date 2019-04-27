@@ -91,7 +91,7 @@ class Contact extends Component {
 										value={firstName}
 										type='text'
 										placeholder='First Name'
-										onchange={this.handleFirstNameChange}
+										onChange={this.handleFirstNameChange}
 									/>
 									<Form.Control.Feedback type='invalid'>
 										Required
@@ -103,7 +103,7 @@ class Contact extends Component {
 										value={lastName}
 										type='text'
 										placeholder='Last Name'
-										onchange={this.handleLastNameChange}
+										onChange={this.handleLastNameChange}
 									/>
 									<Form.Control.Feedback type='invalid'>
 										Required
@@ -142,8 +142,13 @@ class Contact extends Component {
 								onChange={this.handleMessageChange}
 							/>
 						</Form.Group>
-						<Button type='submit' variant='danger' className='mr-2' size='lg'>
-							Send Message
+						<Button
+							type='submit'
+							variant='danger'
+							className='mr-2'
+							size='lg'
+							disabled>
+							Coming Soon
 						</Button>
 						<Button
 							type='button'

@@ -49,7 +49,7 @@ function Navigation() {
 					</Scrollchor>
 				</Navbar.Collapse>
 				<Button
-					variant='outline-primary'
+					variant='outline-light'
 					className='ml-auto'
 					size='sm'
 					href='tel:15027274923'>

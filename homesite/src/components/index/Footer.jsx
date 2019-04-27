@@ -13,18 +13,18 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 const Footer = () => {
 	return (
-		<footer className='bg-dark text-light text-center ee-content-section pb-0'>
+		<footer className='bg-dark text-light text-center ee-content-section pb-0 pt-sm-5'>
 			<Container className='my-auto'>
-				<Row className='mb-md-1 mb-lg-5'>
-					<Col lg={4} className='mb-md-5'>
+				<Row className='mb-md-1'>
+					<Col lg={4} className='mb-md-3'>
 						<h3 className='mb-4'>Emergency Electric Inc</h3>
 						<p className='lead'>
 							7525 Main St NE<br />Lanesville, IN 47136
 						</p>
 					</Col>
-					<Col lg={4} className='mb-md-5'>
+					<Col lg={4} className='mb-md-3'>
 						<h3 className='mb-4'>Contacts</h3>
-						<ButtonGroup vertical>
+						<ButtonGroup vertical className='mb-sm-3'>
 							<Button variant='success' href='tel:18129526014' size='lg'>
 								<FontAwesomeIcon icon={faPhone} className='mr-2' />
 								{`(812) 952-6014`}
@@ -37,8 +37,8 @@ const Footer = () => {
 								size='lg'
 								href='mailto:emergency_electric.com'
 								variant='success'>
-								<FontAwesomeIcon icon={faEnvelope} />
-								{`  Email Us`}
+								<FontAwesomeIcon icon={faEnvelope} className='mr-2' />
+								{`Email Us`}
 							</Button>
 						</ButtonGroup>
 					</Col>

@@ -19,6 +19,7 @@ export const resetContactForm = () => {
 			firstName : '',
 			lastName  : '',
 			email     : '',
+			subject   : '',
 			message   : '',
 		},
 	};
@@ -43,8 +44,8 @@ export const valueContactFormChange = (item, value) => {
 			};
 		case 'subject':
 			return {
-				type: C.CONTACT_FORM_VALUE_CHANGE_SU,
-				payload: { subject: value },
+				type    : C.CONTACT_FORM_VALUE_CHANGE_SU,
+				payload : { subject: value },
 			};
 		case 'message':
 			return {
@@ -58,15 +59,15 @@ export const valueContactFormChange = (item, value) => {
 
 export const sendMessage = values => async dispatch => {
 	const response = await API.post('/message', values).catch(error => {
-		console.log(error);
-		if (!error.status) {
-			dispatch({
-				type    : C.UPDATE_SERVER_RESPONSE,
-				payload : { status: 'Network Error' },
-			});
-		}
+		const resp = { status: 'NE' };
+		dispatch({ type: C.UPDATE_SERVER_RESPONSE, payload: resp });
 	});
-	dispatch({ type: C.UPDATE_SERVER_RESPONSE, payload: response });
+	const resp =
+
+			response === undefined ? { status: 'NE' } :
+			response;
+
+	dispatch({ type: C.UPDATE_SERVER_RESPONSE, payload: resp });
 };
 
 export const showMessageDisplay = value => {
@@ -84,5 +85,12 @@ export const updateMessageDisplay = (color, message, displayMessage) => {
 			variant        : color,
 			message        : message,
 		},
+	};
+};
+
+export const updateFormButton = value => {
+	return {
+		type    : C.UPDATE_SEND_BUTTON,
+		payload : { isSending: value },
 	};
 };

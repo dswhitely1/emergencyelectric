@@ -4,20 +4,23 @@ const INITIAL_STATE = {
 	messageDisplay : false,
 	variant        : '',
 	message        : '',
+	isSending      : false,
 	res            : '',
 };
 export default (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case C.SHOW_MESSAGE_DISPLAY:
 			return { ...state, messageDisplay: action.payload.messageDisplay };
+		case C.UPDATE_SEND_BUTTON:
+			return { ...state, isSending: action.payload.isSending };
 		case C.UPDATE_SERVER_RESPONSE:
-			console.log(action.payload);
-			if (action.payload.status === 'Network Error') {
+			if (action.payload.status === 'NE') {
 				return {
 					...state,
 					res            : '',
 					messageDisplay : true,
 					variant        : 'primary',
+					isSending      : false,
 					message        :
 						'Network is unreachable, please try your request later.',
 				};
@@ -26,7 +29,9 @@ export default (state = INITIAL_STATE, action) => {
 					...state,
 					res            : action.payload.statusText,
 					messageDisplay : true,
+
 					variant        : 'info',
+					isSending      : false,
 					message        : `You're message to Emergency Electric Inc. has been successfully sent!`,
 				};
 			} else {
@@ -35,9 +40,11 @@ export default (state = INITIAL_STATE, action) => {
 					res            : action.payload.statusText,
 					messageDisplay : true,
 					variant        : 'primary',
+					isSending      : false,
 					message        : `You're message was not sent, please try again in a few moments.`,
 				};
 			}
+
 		default:
 			return state;
 	}

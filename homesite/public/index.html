@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/ee.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <!--
@@ -21,6 +21,9 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Emergency Electric Inc</title>
+    <meta name="Description" content="Fully licensed electricians are on call 24 hours a day to help you with any electrical emergency you have. Call Emergency Electric for 
+emergency electrical service.">
+<meta name="Keywords" content="Emergency Electrician Louisville Southern Indiana">
 
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -32,6 +35,45 @@
   
       gtag('config', 'UA-138665422-1');
     </script>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Electrician",
+        "name": "Emergency Electric Inc",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "7525 Main St NE",
+          "addressLocality": "Lanesville",
+          "addressRegion": "IN",
+          "postalCode": "47112"
+        },
+        "email": "emergency_electric@hotmail.com",
+        "telePhone": "812-952-6014",
+        "paymentAccepted": [ "cash", "check", "invoice" ],
+        "openingHours": "Mo,Tu,We,Th,Fr,Sa,Su 0-0",
+        "openingHoursSpecification": [ {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "0",
+          "closes": "0"
+        } ],
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "38.238526",
+          "longitude": "-85.983076"
+        },
+        "priceRange":"$"
+      
+      }
+      </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

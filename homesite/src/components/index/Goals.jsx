@@ -12,7 +12,7 @@ const Goals = () => {
 			<Container>
 				<h2 className='mb-5'>Our Goals</h2>
 				<p className='lead mb-5'>
-					We’re committed to excellence. Our goal is to exceed your
+					We are committed to excellence. Our goal is to exceed your
 					expectations. Using our years of experience and expertise and by
 					providing a dynamic and skilled team we will ensure your projects are
 					a complete success. Our primary measure of success is customer

@@ -15,10 +15,12 @@ import {
 	sendMessage,
 	showMessageDisplay,
 	updateMessageDisplay,
+	updateFormButton,
 } from '../../actions';
 
 class Contact extends Component {
 	handleSubmit(e) {
+		this.props.updateFormButton(true);
 		const form = e.currentTarget;
 		e.preventDefault();
 		e.stopPropagation();
@@ -28,12 +30,13 @@ class Contact extends Component {
 		}
 		this.props.formValidation(true);
 		const values = {
-			firstName : this.props.messageForm.firstName,
-			lastName  : this.props.messageForm.lastName,
-			email     : this.props.messageForm.email,
-			subject   : this.props.messageForm.subject,
-			message   : this.props.messageForm.message,
-			createdAt : new Date().toString(),
+			firstName   : this.props.messageForm.firstName,
+			lastName    : this.props.messageForm.lastName,
+			email       : this.props.messageForm.email,
+			subject     : this.props.messageForm.subject,
+			message     : this.props.messageForm.message,
+			createdAt   : new Date().toString(),
+			readMessage : false,
 		};
 		if (form.checkValidity()) {
 			this.props.sendMessage(values);
@@ -85,7 +88,7 @@ class Contact extends Component {
 						onSubmit={e => this.handleSubmit(e)}>
 						<Form.Group controlId='formContact'>
 							<Row className='mb-2'>
-								<Col md={6}>
+								<Col md={6} className='mb-sm-2 mb-md-0'>
 									<Form.Control
 										required
 										value={firstName}
@@ -142,13 +145,10 @@ class Contact extends Component {
 								onChange={this.handleMessageChange}
 							/>
 						</Form.Group>
-						<Button
-							type='submit'
-							variant='danger'
-							className='mr-2'
-							size='lg'
-							disabled>
-							Coming Soon
+						<Button type='submit' variant='danger' className='mr-2' size='lg'>
+							{
+								this.props.messageAlert.isSending ? `Sending` :
+								`Send Message`}
 						</Button>
 						<Button
 							type='button'
@@ -181,4 +181,5 @@ export default connect(mapStateToProps, {
 	sendMessage,
 	showMessageDisplay,
 	updateMessageDisplay,
+	updateFormButton,
 })(Contact);

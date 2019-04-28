@@ -58,7 +58,10 @@ export const valueContactFormChange = (item, value) => {
 };
 
 export const sendMessage = values => async dispatch => {
-	const response = await API.post('/message', values).catch(error => {
+	const response = await API.post(
+		'/messages/new-message',
+		values,
+	).catch(error => {
 		const resp = { status: 'NE' };
 		dispatch({ type: C.UPDATE_SERVER_RESPONSE, payload: resp });
 	});

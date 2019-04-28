@@ -38,6 +38,7 @@ class Contact extends Component {
 			createdAt   : new Date().toString(),
 			readMessage : false,
 		};
+
 		if (form.checkValidity()) {
 			this.props.sendMessage(values);
 			this.props.resetContactForm();

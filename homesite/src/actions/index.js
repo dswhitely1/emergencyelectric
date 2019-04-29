@@ -97,3 +97,17 @@ export const updateFormButton = value => {
 		payload : { isSending: value },
 	};
 };
+
+export const nextApplicationPage = pageNum => {
+	return {
+		type    : C.CURRENT_APPLICATION_PAGE,
+		payload : { page: pageNum },
+	};
+};
+
+export const prevApplicationPage = pageNum => {
+	return {
+		type    : C.CURRENT_APPLICATION_PAGE,
+		payload : { page: pageNum },
+	};
+};

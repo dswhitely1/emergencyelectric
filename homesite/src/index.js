@@ -8,6 +8,8 @@ import reduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 //import Reducers
 import reducers from './reducers';
+// React Router
+import { BrowserRouter } from 'react-router-dom';
 // Import Main App
 import App from './components/App';
 //CSS Sheet
@@ -22,7 +24,9 @@ const store = createStore(
 // Render the Webpage
 ReactDOM.render(
 	<Provider store={store}>
-		<App />
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
 	</Provider>,
 	document.getElementById('root'),
 );

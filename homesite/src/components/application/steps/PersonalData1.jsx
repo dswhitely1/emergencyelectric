@@ -5,12 +5,73 @@ import {
 	prevApplicationPage,
 	applicationMessage,
 	showMessageDisplay,
+	personalDataFormChange,
+	personalDataFormValidation,
 } from '../../../actions';
 import { Form, Col, Container, Button } from 'react-bootstrap';
 
 class PersonalData1 extends Component {
+	handleSubmit = e => {
+		const {
+			scheduleFullTime,
+			schedulePartTime,
+			scheduleTemporary,
+			shiftEvenings,
+			shiftNights,
+			shiftWeekdays,
+			shiftWeekends,
+		} = this.props.persData;
+		const {
+			authYes,
+			authNo,
+			overYes,
+			overNo,
+			permitYes,
+			permitNo,
+		} = this.props.persData;
+
+		const form = this.refs.formPersonalData;
+		if (!form.checkValidity()) {
+			e.preventDefault();
+			e.stopPropagation();
+		}
+		if (!scheduleFullTime && !schedulePartTime && !scheduleTemporary) {
+			this.props.applicationMessage(
+				'Please select either FullTime, PartTime, or Temporary',
+			);
+			return;
+		}
+
+		if (!shiftEvenings && !shiftNights && !shiftWeekdays && !shiftWeekends) {
+			this.props.applicationMessage(
+				'Please select which schedule you would like?',
+			);
+			return;
+		}
+		if (!authYes && !authNo) {
+			this.props.applicationMessage(
+				'Are you authorized to work in the United States?',
+			);
+			return;
+		}
+		if (!overYes && !overNo) {
+			this.props.applicationMessage('Are you under 18 years of age');
+			return;
+		}
+		if (overYes && !permitYes && !permitNo) {
+			this.props.applicationMessage('Do you have a work permit?');
+			return;
+		}
+		this.props.personalDataFormValidation(true);
+		if (form.checkValidity()) {
+			// Send Data to the Database
+		}
+	};
 	onHandleCheckBox = e => {
-		// this.refs.continue.disabled = !this.formValidation();
+		if (this.props.msgDisplay.messageDisplay === true) {
+			this.props.showMessageDisplay(false);
+		}
+		this.props.personalDataFormChange(e.target.id, e.target.checked);
 	};
 	onPrevPageClick = () => {
 		let num = this.props.appPageIndex.page - 1;
@@ -18,13 +79,13 @@ class PersonalData1 extends Component {
 	};
 
 	onInputChange = e => {
-		this.props.showMessageDisplay(false);
+		if (this.props.msgDisplay.messageDisplay === true) {
+			this.props.showMessageDisplay(false);
+		}
+		this.props.personalDataFormChange(e.target.id, e.target.value);
 	};
 	onNextPageClick = () => {
 		// Let's do some required checkingfirstName
-
-		const emailRegEx = RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g);
-		const zipCodeRegEx = RegExp(/^\d{5}(?:-\d{4})?$/g);
 	};
 
 	render() {
@@ -62,7 +123,11 @@ class PersonalData1 extends Component {
 		return (
 			<section className='ee-content-section'>
 				<Container>
-					<Form>
+					<Form
+						ref='formPersonalData'
+						noValidate
+						validated={this.props.persData.formValidate}
+						onSubmit={e => this.handleSubmit(e)}>
 						<h3 className='mb-1'>Employment Application</h3>
 						<h2 className='mb-2'>Personal Data</h2>
 						<Form.Row>
@@ -152,7 +217,7 @@ class PersonalData1 extends Component {
 							<Form.Group as={Col} md={4}>
 								<Form.Control
 									type='text'
-									id='State'
+									id='state'
 									placeholder='State'
 									value={state}
 									onChange={this.onInputChange}
@@ -165,14 +230,15 @@ class PersonalData1 extends Component {
 							<Form.Group as={Col} md={4}>
 								<Form.Control
 									type='text'
-									id='zipCode'
+									pattern='[0-9]{5}'
+									id='zipcode'
 									placeholder='Zip Code'
 									value={zipcode}
 									onChange={this.onInputChange}
 									required
 								/>
 								<Form.Control.Feedback type='invalid'>
-									Required
+									Required, provide a 5 Digit Zipcode
 								</Form.Control.Feedback>
 							</Form.Group>
 						</Form.Row>
@@ -180,6 +246,7 @@ class PersonalData1 extends Component {
 							<Form.Group as={Col} md={4}>
 								<Form.Control
 									type='text'
+									pattern='[0-9]{10}'
 									id='phoneNumber'
 									placeholder='Phone Number'
 									value={phoneNumber}
@@ -193,11 +260,11 @@ class PersonalData1 extends Component {
 							<Form.Group as={Col} md={4}>
 								<Form.Control
 									type='text'
+									pattern='[0-9]{10}'
 									id='alternatePhoneNumber'
 									placeholder='Alt Phone Number'
 									value={alternatePhoneNumber}
 									onChange={this.onInputChange}
-									required
 								/>
 								<Form.Control.Feedback type='invalid'>
 									Required
@@ -259,7 +326,7 @@ class PersonalData1 extends Component {
 									custom
 									inline
 									label='Weekends'
-									id='scheduleTemporary'
+									id='shiftWeekends'
 									checked={shiftWeekends}
 									onChange={this.onHandleCheckBox}
 								/>
@@ -295,13 +362,14 @@ class PersonalData1 extends Component {
 								<Form.Control
 									type='text'
 									id='desiredPay'
+									pattern='[0-9]{1,2}\.[0-9]{2}'
 									placeholder='Desired Pay'
 									required
 									value={desiredPay}
 									onChange={this.onInputChange}
 								/>
 								<Form.Control.Feedback type='invalid'>
-									Required
+									Required, example 10.00
 								</Form.Control.Feedback>
 							</Form.Group>
 						</Form.Row>
@@ -321,6 +389,7 @@ class PersonalData1 extends Component {
 							</Form.Group>
 							<Form.Group as={Col} md={6}>
 								<Form.Control
+									required
 									type='text'
 									id='positionDesired'
 									placeholder='Position Applying For'
@@ -391,23 +460,22 @@ class PersonalData1 extends Component {
 								/>
 							</Col>
 						</Form.Row>
-						<Button variant='info' type='submit'>
-							Submit
+
+						<Button
+							type='submit'
+							variant='outline-success'
+							className='float-right'
+							onClick={this.handleSubmit}
+							ref={`continue`}>
+							Continue
+						</Button>
+						<Button
+							variant='outline-success'
+							className='float-left'
+							onClick={this.onPrevPageClick}>
+							Previous
 						</Button>
 					</Form>
-					<Button
-						variant='outline-success'
-						className='float-right'
-						onClick={this.onNextPageClick}
-						ref={`continue`}>
-						Continue
-					</Button>
-					<Button
-						variant='outline-success'
-						className='float-left'
-						onClick={this.onPrevPageClick}>
-						Previous
-					</Button>
 				</Container>
 			</section>
 		);
@@ -427,4 +495,6 @@ export default connect(mapStateToProps, {
 	prevApplicationPage,
 	applicationMessage,
 	showMessageDisplay,
+	personalDataFormChange,
+	personalDataFormValidation,
 })(PersonalData1);

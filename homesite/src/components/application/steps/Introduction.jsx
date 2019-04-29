@@ -5,7 +5,6 @@ import { nextApplicationPage } from '../../../actions';
 class Introduction extends Component {
 	onNextPageClick = () => {
 		let num = this.props.appPageIndex.page + 1;
-		console.log(num);
 		this.props.nextApplicationPage(num);
 	};
 

@@ -1,56 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { nextApplicationPage, prevApplicationPage, applicationMessage } from '../../../actions';
-import { Form, Col, Container, Button } from 'react-bootstrap';
 import {
-	formPersonalData,
-	formPersonalData2,
-	schedule,
-	shift,
-	auth,
-	over,
-	permit,
-} from '../../../js/personalData1';
+	nextApplicationPage,
+	prevApplicationPage,
+	applicationMessage,
+	showMessageDisplay,
+} from '../../../actions';
+import { Form, Col, Container, Button } from 'react-bootstrap';
+
 class PersonalData1 extends Component {
 	onHandleCheckBox = e => {
-		if (e.currentTarget.id === 'authNo') {
-			this.refs.authYes.checked = false;
-		} else if (e.currentTarget.id === 'authYes') {
-			this.refs.authNo.checked = false;
-		} else if (e.currentTarget.id === 'overYes') {
-			this.refs.overNo.checked = false;
-			this.refs.permitNo.disabled = false;
-			this.refs.permitYes.disabled = false;
-		} else if (e.currentTarget.id === 'overNo') {
-			this.refs.overYes.checked = false;
-			this.refs.permitNo.checked = false;
-			this.refs.permitYes.checked = false;
-			this.refs.permitNo.disabled = true;
-			this.refs.permitYes.disabled = true;
-		} else if (e.currentTarget.id === 'permitYes') {
-			this.refs.permitNo.checked = false;
-		} else if (e.currentTarget.id === 'permitNo') {
-			this.refs.permitYes.checked = false;
-		}
-		this.refs.continue.disabled = !this.formValidation();
+		// this.refs.continue.disabled = !this.formValidation();
 	};
 	onPrevPageClick = () => {
 		let num = this.props.appPageIndex.page - 1;
 		this.props.prevApplicationPage(num);
 	};
-	formValidation = () => {
+
+	onInputChange = e => {
+		this.props.showMessageDisplay(false);
+	};
+	onNextPageClick = () => {
+		// Let's do some required checkingfirstName
+
+		const emailRegEx = RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g);
+		const zipCodeRegEx = RegExp(/^\d{5}(?:-\d{4})?$/g);
+	};
+
+	render() {
 		const {
 			firstName,
+			middleName,
 			lastName,
+			preferredName,
 			address,
+			apartment,
 			city,
 			state,
 			zipcode,
 			phoneNumber,
+			alternatePhoneNumber,
 			emailAddress,
-			desiredPay,
-			whenAreYouAbleToStartWork,
-			positionDesired,
 			scheduleFullTime,
 			schedulePartTime,
 			scheduleTemporary,
@@ -58,169 +48,357 @@ class PersonalData1 extends Component {
 			shiftWeekends,
 			shiftEvenings,
 			shiftNights,
+			howDidYouHearAboutUs,
+			desiredPay,
+			whenAreYouAbleToStartWork,
+			positionDesired,
 			authYes,
 			authNo,
 			overYes,
 			overNo,
 			permitYes,
 			permitNo,
-		} = this.refs;
-		if (firstName.value === '') {
-			this.props.applicationMessage(`The first name field is required`);
-			return false;
-		} else if (lastName.value === '') {
-			return false;
-		} else if (address.value === '') {
-			return false;
-		} else if (city.value === '') {
-			return false;
-		} else if (state.value === '') {
-			return false;
-		} else if (zipcode.value === '') {
-			return false;
-		} else if (phoneNumber.value === '') {
-			return false;
-		} else if (emailAddress.value === '') {
-			return false;
-		} else if (desiredPay.value === '') {
-			return false;
-		} else if (whenAreYouAbleToStartWork.value === '') {
-			return false;
-		} else if (positionDesired.value === '') {
-			return false;
-		} else if (
-			!scheduleFullTime.checked &&
-			!schedulePartTime.checked &&
-			!scheduleTemporary.checked
-		) {
-			return false;
-		} else if (
-			!shiftWeekdays.checked &&
-			!shiftWeekends.checked &&
-			!shiftEvenings.checked &&
-			!shiftNights.checked
-		) {
-			return false;
-		} else if (!authYes.checked && !authNo.checked) {
-			return false;
-		} else if (!overYes.checked && !overNo.checked) {
-			return false;
-		} else if (overYes.checked) {
-			if (!permitYes.checked && !permitNo.checked) {
-				return false;
-			}
-		}
-		return true;
-	};
-	onInputChange = e => {
-		this.refs.continue.disabled = !this.formValidation();
-	};
-	onNextPageClick = () => {
-		// Let's do some required checkingfirstName
-		console.log(this.formValidation());
-	};
-	renderFormRows(value, index) {
-		const renderFormList = value.map((obj, i) => {
-			console.log(obj.toCamelCase());
-			if (obj.require) {
-				return (
-					<Form.Group
-						as={Col}
-						md={`${obj.width}`}
-						key={`${obj.toCamelCase()}-row-${index}-col-${i}`}>
-						<Form.Control
-							type={`${obj.type}`}
-							id={`${obj.toCamelCase()}${index}`}
-							ref={`${obj.toCamelCase()}`}
-							required
-							placeholder={`${obj.name}*`}
-							onChange={this.onInputChange}
-						/>
-					</Form.Group>
-				);
-			} else {
-				return (
-					<Form.Group
-						as={Col}
-						md={`${obj.width}`}
-						key={`${obj.toCamelCase()}-row-${index}-col-${i}`}>
-						<Form.Control
-							type={`${obj.type}`}
-							id={`${obj.toCamelCase()}${index}`}
-							placeholder={`${obj.name}`}
-							ref={`${obj.toCamelCase()}`}
-							onChange={this.onInputChange}
-						/>
-					</Form.Group>
-				);
-			}
-		});
-		return renderFormList;
-	}
-	renderCheckList(value, index) {
-		const renderedCheckList = value.map((obj, i) => {
-			console.log(obj.toCamelCase());
-			return (
-				<Form.Check
-					custom
-					inline
-					label={`${obj.label}`}
-					id={`${obj.toCamelCase()}`}
-					key={`${obj.toCamelCase()}-${i}`}
-					ref={`${obj.toCamelCase()}`}
-					onChange={this.onHandleCheckBox}
-				/>
-			);
-		});
-		return renderedCheckList;
-	}
-	render() {
+		} = this.props.persData;
 		return (
 			<section className='ee-content-section'>
 				<Container>
 					<Form>
 						<h3 className='mb-1'>Employment Application</h3>
 						<h2 className='mb-2'>Personal Data</h2>
-						{formPersonalData.map((rows, i) => (
-							<Form.Row key={`personaldata1-${i}`}>
-								{this.renderFormRows(rows, i)}
-							</Form.Row>
-						))}
+						<Form.Row>
+							<Form.Group as={Col} md={4}>
+								<Form.Control
+									type='text'
+									id='firstName'
+									placeholder='First Name'
+									value={firstName}
+									required
+									onChange={this.onInputChange}
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Required
+								</Form.Control.Feedback>
+							</Form.Group>
+							<Form.Group as={Col} md={2}>
+								<Form.Control
+									type='text'
+									id='middleName'
+									placeholder='Middle Name'
+									value={middleName}
+									onChange={this.onInputChange}
+								/>
+							</Form.Group>
+							<Form.Group as={Col} md={4}>
+								<Form.Control
+									type='text'
+									id='lastName'
+									placeholder='Last Name'
+									value={lastName}
+									required
+									onChange={this.onInputChange}
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Required
+								</Form.Control.Feedback>
+							</Form.Group>
+							<Form.Group as={Col} md={2}>
+								<Form.Control
+									type='text'
+									id='preferredName'
+									placeholder='Preferred Name'
+									value={preferredName}
+									onChange={this.onInputChange}
+								/>
+							</Form.Group>
+						</Form.Row>
+						<Form.Row>
+							<Form.Group as={Col} md={6}>
+								<Form.Control
+									type='text'
+									id='address'
+									placeholder='Address'
+									value={address}
+									required
+									onChange={this.onInputChange}
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Required
+								</Form.Control.Feedback>
+							</Form.Group>
+							<Form.Group as={Col} md={6}>
+								<Form.Control
+									type='text'
+									id='apartment'
+									placeholder='Apartment'
+									value={apartment}
+									onChange={this.onInputChange}
+								/>
+							</Form.Group>
+						</Form.Row>
+						<Form.Row>
+							<Form.Group as={Col} md={4}>
+								<Form.Control
+									type='text'
+									id='city'
+									placeholder='City'
+									value={city}
+									onChange={this.onInputChange}
+									required
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Required
+								</Form.Control.Feedback>
+							</Form.Group>
+							<Form.Group as={Col} md={4}>
+								<Form.Control
+									type='text'
+									id='State'
+									placeholder='State'
+									value={state}
+									onChange={this.onInputChange}
+									required
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Required
+								</Form.Control.Feedback>
+							</Form.Group>
+							<Form.Group as={Col} md={4}>
+								<Form.Control
+									type='text'
+									id='zipCode'
+									placeholder='Zip Code'
+									value={zipcode}
+									onChange={this.onInputChange}
+									required
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Required
+								</Form.Control.Feedback>
+							</Form.Group>
+						</Form.Row>
+						<Form.Row>
+							<Form.Group as={Col} md={4}>
+								<Form.Control
+									type='text'
+									id='phoneNumber'
+									placeholder='Phone Number'
+									value={phoneNumber}
+									onChange={this.onInputChange}
+									required
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Required
+								</Form.Control.Feedback>
+							</Form.Group>
+							<Form.Group as={Col} md={4}>
+								<Form.Control
+									type='text'
+									id='alternatePhoneNumber'
+									placeholder='Alt Phone Number'
+									value={alternatePhoneNumber}
+									onChange={this.onInputChange}
+									required
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Required
+								</Form.Control.Feedback>
+							</Form.Group>
+							<Form.Group as={Col} md={4}>
+								<Form.Control
+									type='email'
+									id='emailAddress'
+									placeholder='E-mail Address'
+									value={emailAddress}
+									onChange={this.onInputChange}
+									required
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Invalid Email Address
+								</Form.Control.Feedback>
+							</Form.Group>
+						</Form.Row>
 						<Form.Row className='mb-3'>
 							<Col md={6}>
 								<p>Are you interested in?</p>
-								{this.renderCheckList(schedule)}
+								<Form.Check
+									custom
+									inline
+									label='Full Time'
+									id='scheduleFullTime'
+									checked={scheduleFullTime}
+									onChange={this.onHandleCheckBox}
+								/>
+								<Form.Check
+									custom
+									inline
+									label='Part Time'
+									id='schedulePartTime'
+									checked={schedulePartTime}
+									onChange={this.onHandleCheckBox}
+								/>
+								<Form.Check
+									custom
+									inline
+									label='Temporary'
+									id='scheduleTemporary'
+									checked={scheduleTemporary}
+									onChange={this.onHandleCheckBox}
+								/>
 							</Col>
 							<Col md={6}>
 								<p>What Schedule would you prefer?</p>
-								{this.renderCheckList(shift)}
+								<Form.Check
+									custom
+									inline
+									label='Weekdays'
+									id='shiftWeekdays'
+									checked={shiftWeekdays}
+									onChange={this.onHandleCheckBox}
+								/>
+								<Form.Check
+									custom
+									inline
+									label='Weekends'
+									id='scheduleTemporary'
+									checked={shiftWeekends}
+									onChange={this.onHandleCheckBox}
+								/>
+								<Form.Check
+									custom
+									inline
+									label='Evenings'
+									id='shiftEvenings'
+									checked={shiftEvenings}
+									onChange={this.onHandleCheckBox}
+								/>
+								<Form.Check
+									custom
+									inline
+									label='Nights'
+									id='shiftNights'
+									checked={shiftNights}
+									onChange={this.onHandleCheckBox}
+								/>
 							</Col>
 						</Form.Row>
-						{formPersonalData2.map((rows, i) => (
-							<Form.Row key={`personaldata2-${i}`}>
-								{this.renderFormRows(rows, i)}
-							</Form.Row>
-						))}
+						<Form.Row>
+							<Form.Group as={Col} md={6}>
+								<Form.Control
+									type='text'
+									id='howDidYouHearAboutUs'
+									placeholder='Referred by'
+									value={howDidYouHearAboutUs}
+									onChange={this.onInputChange}
+								/>
+							</Form.Group>
+							<Form.Group as={Col} md={6}>
+								<Form.Control
+									type='text'
+									id='desiredPay'
+									placeholder='Desired Pay'
+									required
+									value={desiredPay}
+									onChange={this.onInputChange}
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Required
+								</Form.Control.Feedback>
+							</Form.Group>
+						</Form.Row>
+						<Form.Row>
+							<Form.Group as={Col} md={6}>
+								<Form.Control
+									type='date'
+									id='whenAreYouAbleToStartWork'
+									placeholder='Date Available To Start'
+									value={whenAreYouAbleToStartWork}
+									required
+									onChange={this.onInputChange}
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Required
+								</Form.Control.Feedback>
+							</Form.Group>
+							<Form.Group as={Col} md={6}>
+								<Form.Control
+									type='text'
+									id='positionDesired'
+									placeholder='Position Applying For'
+									value={positionDesired}
+									onChange={this.onInputChange}
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Required
+								</Form.Control.Feedback>
+							</Form.Group>
+						</Form.Row>
 						<Form.Row className='mb-3'>
 							<Col md={4}>
 								<p>Are you authorized to work in the United States?</p>
-								{this.renderCheckList(auth)}
+								<Form.Check
+									custom
+									inline
+									label='Yes'
+									id='authYes'
+									checked={authYes}
+									onChange={this.onHandleCheckBox}
+								/>
+								<Form.Check
+									custom
+									inline
+									label='No'
+									id='authNo'
+									checked={authNo}
+									onChange={this.onHandleCheckBox}
+								/>
 							</Col>
 							<Col md={4}>
 								<p>Are you under 18 years of age?</p>
-								{this.renderCheckList(over)}
+								<Form.Check
+									custom
+									inline
+									label='Yes'
+									id='overYes'
+									checked={overYes}
+									onChange={this.onHandleCheckBox}
+								/>
+								<Form.Check
+									custom
+									inline
+									label='No'
+									id='overNo'
+									checked={overNo}
+									onChange={this.onHandleCheckBox}
+								/>
 							</Col>
 							<Col md={4}>
 								<p>If so, can you furnish a work permit?</p>
-								{this.renderCheckList(permit)}
+								<Form.Check
+									custom
+									inline
+									label='Yes'
+									id='permitYes'
+									checked={permitYes}
+									onChange={this.onHandleCheckBox}
+								/>
+								<Form.Check
+									custom
+									inline
+									label='No'
+									id='permitNo'
+									checked={permitNo}
+									onChange={this.onHandleCheckBox}
+								/>
 							</Col>
 						</Form.Row>
+						<Button variant='info' type='submit'>
+							Submit
+						</Button>
 					</Form>
 					<Button
 						variant='outline-success'
 						className='float-right'
 						onClick={this.onNextPageClick}
-						disabled
 						ref={`continue`}>
 						Continue
 					</Button>
@@ -237,10 +415,16 @@ class PersonalData1 extends Component {
 }
 
 const mapStateToProps = state => {
-	return { appPageIndex: state.applicationPage };
+	return {
+		appPageIndex : state.applicationPage,
+		msgDisplay   : state.messageDisplay,
+		persData     : state.personalData,
+	};
 };
 
 export default connect(mapStateToProps, {
 	nextApplicationPage,
-	prevApplicationPage, applicationMessage
+	prevApplicationPage,
+	applicationMessage,
+	showMessageDisplay,
 })(PersonalData1);

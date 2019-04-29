@@ -10,7 +10,7 @@ class MessageDisplay extends Component {
 	render() {
 		const { variant, message } = this.props.msgDisplay;
 		return (
-			<div className='text-center bg-dark'>
+			<div className='text-center'>
 				<Alert variant={variant} className='mb-0'>
 					{message}
 

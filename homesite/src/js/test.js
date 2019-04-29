@@ -118,20 +118,6 @@ const Position = new FormDataRows({
 	required : true,
 });
 
-const personalDataRow1 = [ FirstName, MiddleName, LastName, PreferredName ];
-const personalDataRow2 = [ Address, Apartment ];
-const personalDataRow3 = [ City, State, ZipCode ];
-const personalDataRow4 = [ PhoneNumber, AlternateNumber, Email ];
-const personalDataRow5 = [ Referral, DesiredPay ];
-const personalDataRow6 = [ StartDate, Position ];
-export const formPersonalData = [
-	personalDataRow1,
-	personalDataRow2,
-	personalDataRow3,
-	personalDataRow4,
-];
-export const formPersonalData2 = [ personalDataRow5, personalDataRow6 ];
-
 class CheckBoxes extends FormDataRows {
 	constructor(attributes) {
 		super(attributes);
@@ -222,8 +208,61 @@ const PermitNo = new CheckBoxes({
 	label           : 'No',
 });
 
-export const schedule = [ FullTime, PartTime, Temporary ];
-export const shift = [ Weekdays, Weekends, Evenings, Nights ];
-export const auth = [ AuthYes, AuthNo ];
-export const over = [ OverYes, OverNo ];
-export const permit = [ PermitYes, PermitNo ];
+const schedule = [ FullTime, PartTime, Temporary ];
+const shift = [ Weekdays, Weekends, Evenings, Nights ];
+const auth = [ AuthYes, AuthNo ];
+const over = [ OverYes, OverNo ];
+const permit = [ PermitYes, PermitNo ];
+const personalDataRow1 = [ FirstName, MiddleName, LastName, PreferredName ];
+const personalDataRow2 = [ Address, Apartment ];
+const personalDataRow3 = [ City, State, ZipCode ];
+const personalDataRow4 = [ PhoneNumber, AlternateNumber, Email ];
+const personalDataRow5 = [ Referral, DesiredPay ];
+const personalDataRow6 = [ StartDate, Position ];
+const formPersonalData = [
+	personalDataRow1,
+	personalDataRow2,
+	personalDataRow3,
+	personalDataRow4,
+];
+const formPersonalData2 = [ personalDataRow5, personalDataRow6 ];
+const formPersonalQuestion1 = [ schedule, shift ];
+const formPersonalQuestion2 = [ auth, over, permit ];
+const allData = [
+	formPersonalData,
+	formPersonalQuestion1,
+	formPersonalData2,
+	formPersonalQuestion2,
+];
+
+console.log(allData);
+
+console.log(allData[0][0][0].toCamelCase());
+
+let variablesId = [];
+
+for (let i = 0; i < allData.length; i++) {
+	for (let y = 0; y < allData[i].length; y++) {
+		for (let x = 0; x < allData[i][y].length; x++) {
+			variablesId = [ ...variablesId, allData[i][y][x].toCamelCase() ];
+		}
+	}
+}
+
+console.log(variablesId);
+
+const actionCreater = calledName => {
+	return `UPDATE_${calledName.toUpperCase()}_CHANGE : "UPDATE_${calledName.toUpperCase()}_CHANGE"`;
+};
+
+let actions = [];
+
+for (let i = 0; i < allData.length; i++) {
+	for (let y = 0; y < allData[i].length; y++) {
+		for (let x = 0; x < allData[i][y].length; x++) {
+			actions = [ ...actions, actionCreater(allData[i][y][x].toCamelCase()) ];
+		}
+	}
+}
+
+console.log(actions);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { nextApplicationPage, prevApplicationPage } from '../../../actions';
+import { nextApplicationPage, prevApplicationPage, applicationMessage } from '../../../actions';
 import { Form, Col, Container, Button } from 'react-bootstrap';
 import {
 	formPersonalData,
@@ -66,6 +66,7 @@ class PersonalData1 extends Component {
 			permitNo,
 		} = this.refs;
 		if (firstName.value === '') {
+			this.props.applicationMessage(`The first name field is required`);
 			return false;
 		} else if (lastName.value === '') {
 			return false;
@@ -241,5 +242,5 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
 	nextApplicationPage,
-	prevApplicationPage,
+	prevApplicationPage, applicationMessage
 })(PersonalData1);

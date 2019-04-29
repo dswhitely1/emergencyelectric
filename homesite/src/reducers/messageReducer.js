@@ -44,7 +44,8 @@ export default (state = INITIAL_STATE, action) => {
 					message        : `You're message was not sent, please try again in a few moments.`,
 				};
 			}
-
+			case C.APPLICATION_ERROR_MESSAGE:
+				return {...state, messageDisplay: true, variant:'primary', message: action.payload.message}
 		default:
 			return state;
 	}

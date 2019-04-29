@@ -111,3 +111,12 @@ export const prevApplicationPage = pageNum => {
 		payload : { page: pageNum },
 	};
 };
+
+export const applicationMessage = (message) => {
+	return {
+		type: C.APPLICATION_ERROR_MESSAGE,
+		payload: {
+			message: message
+		}
+	}
+}

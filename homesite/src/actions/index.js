@@ -1,5 +1,6 @@
 import API from '../api';
 import C from './types';
+import { defaultCipherList } from 'constants';
 
 export const formValidation = value => {
 	return {
@@ -344,4 +345,22 @@ export const clearEmploymentForm = () => {
 			contactNo         : false,
 		},
 	};
+};
+
+export const educationFormChange = (item, value) => {
+	switch (item) {
+		case 'schoolName':
+			return {
+				type: C.UPDATE_SCHOOLNAME_CHANGE,
+				payload: { schoolName: value },
+			};
+		case 'subject':
+			return { type: C.UPDATE_SUBJECT_CHANGE, payload: { subject: value } };
+		case 'graduate':
+			return { type: C.UPDATE_GRADUATE_CHANGE, payload: { graduate: value } };
+		case 'degree':
+			return { type: C.UPDATE_DEGREE_CHANGE, payload: { degree: value } };
+		default:
+			return null;
+	}
 };

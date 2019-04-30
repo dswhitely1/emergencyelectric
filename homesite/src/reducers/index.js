@@ -5,11 +5,12 @@ import messageReducer from './messageReducer';
 import applicationPageReducer from './applicationPageReducer';
 import personalDataReducer from './personalDataReducer';
 import employmentReducer from './employmentReducer';
-
+import educationReducer from './educationReducer';
 export default combineReducers({
 	formContact     : formReducer,
 	messageDisplay  : messageReducer,
 	applicationPage : applicationPageReducer,
 	personalData    : personalDataReducer,
 	employmentInfo  : employmentReducer,
+	educationInfo   : educationReducer,
 });

@@ -8,6 +8,8 @@ import {
 	employmentFormValidation,
 	sendEmploymentData,
 	clearEmploymentForm,
+	nextApplicationPage,
+	prevApplicationPage,
 } from '../../../actions';
 class Employment extends Component {
 	handleSubmit = e => {
@@ -65,6 +67,15 @@ class Employment extends Component {
 		}
 		this.props.employmentInfoChange(e.target.id, e.target.value);
 	};
+	onNextPageClick = () => {
+		let num = this.props.appPageIndex.page + 1;
+		this.props.nexApplicationPage(num);
+	};
+	onPrevPageClick = () => {
+		let num = this.props.appPageIndex.page - 1;
+		this.props.prevApplicationPage(num);
+	};
+
 	render() {
 		const {
 			companyName,
@@ -242,7 +253,11 @@ class Employment extends Component {
 	}
 }
 const mapStateToProps = state => {
-	return { employInfo: state.employmentInfo, msgDisplay: state.messageDisplay };
+	return {
+		employInfo: state.employmentInfo,
+		msgDisplay: state.messageDisplay,
+		appPageIndex: state.applicationPage,
+	};
 };
 export default connect(mapStateToProps, {
 	showMessageDisplay,
@@ -251,4 +266,6 @@ export default connect(mapStateToProps, {
 	employmentFormValidation,
 	clearEmploymentForm,
 	sendEmploymentData,
+	nextApplicationPage,
+	prevApplicationPage,
 })(Employment);

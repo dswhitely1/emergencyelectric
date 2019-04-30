@@ -6,6 +6,7 @@ import PersonalData1 from './steps/PersonalData1';
 import Introduction2 from './steps/Introduction2';
 import MessageDisplay from '../index/MessageDisplay';
 import Employment from './steps/Employment';
+import Education from './steps/Education';
 class Application extends Component {
 	render() {
 		const { page } = this.props.appPageIndex;
@@ -18,15 +19,16 @@ class Application extends Component {
 					page === 0 ? <Introduction /> :
 					page === 1 ? <Introduction2 /> :
 					page === 2 ? <PersonalData1 /> :
-					<Employment />}
+					page === 3 ? <Employment /> :
+					<Education />}
 			</div>
 		);
 	}
 }
 const mapStateToProps = state => {
 	return {
-		appPageIndex: state.applicationPage,
-		msgDisplay: state.messageDisplay,
+		appPageIndex : state.applicationPage,
+		msgDisplay   : state.messageDisplay,
 	};
 };
 

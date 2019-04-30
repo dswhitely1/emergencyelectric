@@ -79,4 +79,20 @@ router.post('/employment', (req, res) => {
 		});
 });
 
+router.post('/education', (req, res) => {
+	const message = req.body;
+	console.log(message);
+	db
+		.insert(message)
+		.into('educatoin')
+		.then(ids => {
+			console.log(ids);
+			res.status(201).json(ids);
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(500).json(err);
+		});
+});
+
 module.exports = router;

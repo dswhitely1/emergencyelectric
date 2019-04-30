@@ -1,6 +1,7 @@
 import C from '../actions/types';
 
 const INITIAL_STATE = {
+	appId          : null,
 	messageDisplay : false,
 	variant        : '',
 	message        : '',
@@ -44,8 +45,25 @@ export default (state = INITIAL_STATE, action) => {
 					message        : `You're message was not sent, please try again in a few moments.`,
 				};
 			}
-			case C.APPLICATION_ERROR_MESSAGE:
-				return {...state, messageDisplay: true, variant:'primary', message: action.payload.message}
+		case C.APPLICATION_ERROR_MESSAGE:
+			return {
+				...state,
+				messageDisplay: true,
+				variant: 'primary',
+				message: action.payload.message,
+			};
+		case C.UPDATE_PERSONAL_DATA_DB_1:
+			if (action.payload.appId === 'NE') {
+				return {
+					...state,
+					res            : '',
+					messageDisplay : true,
+					variant        : 'primary',
+					message        :
+						'Network is unreachable, please try your request later.',
+				};
+			}
+			return { ...state, appId: action.payload.appId };
 		default:
 			return state;
 	}

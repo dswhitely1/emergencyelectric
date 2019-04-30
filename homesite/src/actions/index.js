@@ -245,3 +245,21 @@ export const personalDataFormValidation = value => {
 		},
 	};
 };
+
+export const sendPersonalDataDB1 = values => async dispatch => {
+	const response = await API.post(
+		'/application/persdata1',
+		values,
+	).catch(err => {
+		const resp = { appId: 'NE' };
+		dispatch({ type: C.UPDATE_PERSONAL_DATA_DB_1, payload: resp });
+	});
+	const resp =
+
+			response === undefined ? { appId: 'NE' } :
+			response.data;
+	dispatch({
+		type    : C.UPDATE_PERSONAL_DATA_DB_1,
+		payload : { appId: resp },
+	});
+};

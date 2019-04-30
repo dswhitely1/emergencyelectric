@@ -7,6 +7,7 @@ import {
 	showMessageDisplay,
 	personalDataFormChange,
 	personalDataFormValidation,
+	sendPersonalDataDB1,
 } from '../../../actions';
 import { Form, Col, Container, Button } from 'react-bootstrap';
 
@@ -31,6 +32,8 @@ class PersonalData1 extends Component {
 		} = this.props.persData;
 
 		const form = this.refs.formPersonalData;
+		e.preventDefault();
+		e.stopPropagation();
 		if (!form.checkValidity()) {
 			e.preventDefault();
 			e.stopPropagation();
@@ -64,7 +67,7 @@ class PersonalData1 extends Component {
 		}
 		this.props.personalDataFormValidation(true);
 		if (form.checkValidity()) {
-			// Send Data to the Database
+			this.props.sendPersonalDataDB1(this.props.persData);
 		}
 	};
 	onHandleCheckBox = e => {
@@ -497,4 +500,5 @@ export default connect(mapStateToProps, {
 	showMessageDisplay,
 	personalDataFormChange,
 	personalDataFormValidation,
+	sendPersonalDataDB1,
 })(PersonalData1);

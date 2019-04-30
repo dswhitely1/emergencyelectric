@@ -48,9 +48,9 @@ export default (state = INITIAL_STATE, action) => {
 		case C.APPLICATION_ERROR_MESSAGE:
 			return {
 				...state,
-				messageDisplay: true,
-				variant: 'primary',
-				message: action.payload.message,
+				messageDisplay : true,
+				variant        : 'primary',
+				message        : action.payload.message,
 			};
 		case C.UPDATE_PERSONAL_DATA_DB_1:
 			if (action.payload.appId === 'NE') {
@@ -64,6 +64,23 @@ export default (state = INITIAL_STATE, action) => {
 				};
 			}
 			return { ...state, appId: action.payload.appId };
+		case C.UPDATE_EMPLOYMENT_DATA_DB:
+			if (action.payload.status === 'NE') {
+				return {
+					...state,
+					res            : '',
+					messageDisplay : true,
+					variant        : 'primary',
+					message        :
+						'Network is unreachable, please try your request later.',
+				};
+			}
+			return {
+				...state,
+				messageDisplay: true,
+				variant: 'info',
+				message: `You're employment information has been updated.`,
+			};
 		default:
 			return state;
 	}

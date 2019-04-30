@@ -69,6 +69,8 @@ class PersonalData1 extends Component {
 		if (form.checkValidity()) {
 			this.props.sendPersonalDataDB1(this.props.persData);
 		}
+		const nextNum = this.props.appPageIndex.page + 1;
+		this.props.nextApplicationPage(nextNum);
 	};
 	onHandleCheckBox = e => {
 		if (this.props.msgDisplay.messageDisplay === true) {

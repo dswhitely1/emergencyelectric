@@ -263,3 +263,85 @@ export const sendPersonalDataDB1 = values => async dispatch => {
 		payload : { appId: resp },
 	});
 };
+
+export const sendEmploymentData = values => async dispatch => {
+	const response = await API.post(
+		'/application/employment',
+		values,
+	).catch(err => {
+		const resp = { status: 'NE' };
+		dispatch({ type: C.UPDATE_EMPLOYMENT_DATA_DB, payload: resp });
+	});
+	const resp =
+
+			response === undefined ? { status: 'NE' } :
+			response.data;
+	dispatch({ type: C.UPDATE_EMPLOYMENT_DATA_DB, payload: resp });
+};
+
+export const employmentInfoChange = (item, value) => {
+	switch (item) {
+		case 'companyName':
+			return {
+				type    : C.UPDATE_COMPANYNAME_CHANGE,
+				payload : { companyName: value },
+			};
+		case 'companyPhone':
+			return {
+				type    : C.UPDATE_COMPANYPHONE_CHANGE,
+				payload : { companyPhone: value },
+			};
+		case 'companyCitySt':
+			return {
+				type    : C.UPDATE_COMPANYCITYST_CHANGE,
+				payload : { companyCitySt: value },
+			};
+		case 'companySupervisor':
+			return {
+				type    : C.UPDATE_COMPANYSUPERVISOR_CHANGE,
+				payload : { companySupervisor: value },
+			};
+		case 'startDate':
+			return { type: C.UPDATE_STARTDATE_CHANGE, payload: { startDate: value } };
+		case 'endDate':
+			return { type: C.UPDATE_ENDDATE_CHANGE, payload: { endDate: value } };
+		case 'reasonLeaving':
+			return {
+				type    : C.UPDATE_REASONLEAVING_CHANGE,
+				payload : { reasonLeaving: value },
+			};
+		case 'contactYes':
+			return {
+				type    : C.UPDATE_CONTACTYES_CHANGE,
+				payload : { contactYes: value },
+			};
+		case 'contactNo':
+			return { type: C.UPDATE_CONTACTNO_CHANGE, payload: { contactNo: value } };
+		default:
+			return null;
+	}
+};
+
+export const employmentFormValidation = value => {
+	return {
+		type    : C.EMPLOYMENT_FORM_VALIDATION,
+		payload : { formValidation: value },
+	};
+};
+
+export const clearEmploymentForm = () => {
+	return {
+		type    : C.EMPLOYMENT_FORM_CLEAR,
+		payload : {
+			companyName       : '',
+			companyPhone      : '',
+			companyCitySt     : '',
+			companySupervisor : '',
+			startDate         : '',
+			endDate           : '',
+			reasonLeaving     : '',
+			contactYes        : false,
+			contactNo         : false,
+		},
+	};
+};

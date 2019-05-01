@@ -73,4 +73,5 @@ export default {
 	REFERENCE_FORM_CLEAR                    : 'REFERENCE_FORM_CLEAR',
 	UPDATE_REFERENCE_DATA_DB                : 'UPDATE_REFERENCE_DATA_DB',
 	REFERENCE_FORM_VALIDATION               : 'REFERENCE_FORM_VALIDATION',
+	RESET_APPID                             : 'RESET_APPID',
 };

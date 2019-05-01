@@ -450,3 +450,9 @@ export const referenceFormValidation = value => {
 		payload : { formValidation: value },
 	};
 };
+
+export const resetAppId = () => {
+	return {
+		type : C.RESET_APPID,
+	};
+};

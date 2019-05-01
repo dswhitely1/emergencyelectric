@@ -8,6 +8,7 @@ import {
 	clearEducationForm,
 	prevApplicationPage,
 	nextApplicationPage,
+	showMessageDisplay,
 } from '../../../actions';
 class Education extends Component {
 	handleSubmit = e => {
@@ -144,7 +145,7 @@ class Education extends Component {
 								type='button'
 								variant='outline-success'
 								className='ml-auto'>
-								Next Section
+								References
 							</Button>
 						</Form.Row>
 					</Form>
@@ -168,4 +169,5 @@ export default connect(mapStateToProps, {
 	clearEducationForm,
 	prevApplicationPage,
 	nextApplicationPage,
+	showMessageDisplay,
 })(Education);

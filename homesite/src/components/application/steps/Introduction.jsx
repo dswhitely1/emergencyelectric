@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container, Button } from 'react-bootstrap';
-import { nextApplicationPage } from '../../../actions';
+import { nextApplicationPage, resetAppId } from '../../../actions';
 class Introduction extends Component {
 	onNextPageClick = () => {
 		let num = this.props.appPageIndex.page + 1;
+		this.props.resetAppId();
 		this.props.nextApplicationPage(num);
 	};
-
 	render() {
 		return (
 			<div>
@@ -54,4 +54,6 @@ const mapStateToProps = state => {
 	return { appPageIndex: state.applicationPage };
 };
 
-export default connect(mapStateToProps, { nextApplicationPage })(Introduction);
+export default connect(mapStateToProps, { nextApplicationPage, resetAppId })(
+	Introduction,
+);

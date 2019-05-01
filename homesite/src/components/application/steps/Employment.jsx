@@ -14,7 +14,6 @@ import {
 class Employment extends Component {
 	handleSubmit = e => {
 		const {
-			parentid,
 			companyName,
 			companyPhone,
 			companyCitySt,
@@ -65,11 +64,11 @@ class Employment extends Component {
 		if (this.props.msgDisplay.messageDisplay === true) {
 			this.props.showMessageDisplay(false);
 		}
-		this.props.employmentInfoChange(e.target.id, e.target.value);
+		this.props.employmentInfoChange(e.target.id, e.target.checked);
 	};
 	onNextPageClick = () => {
 		let num = this.props.appPageIndex.page + 1;
-		this.props.nexApplicationPage(num);
+		this.props.nextApplicationPage(num);
 	};
 	onPrevPageClick = () => {
 		let num = this.props.appPageIndex.page - 1;
@@ -236,14 +235,18 @@ class Employment extends Component {
 							</Button>
 						</Form.Row>
 						<Form.Row>
-							<Button type='button' variant='outline-success'>
-								Personal Data
-							</Button>
 							<Button
 								type='button'
 								variant='outline-success'
+								onClick={this.onPrevPageClick}>
+								Personal Data
+							</Button>
+							<Button
+								onClick={this.onNextPageClick}
+								type='button'
+								variant='outline-success'
 								className='ml-auto'>
-								Next Section
+								Education
 							</Button>
 						</Form.Row>
 					</Form>
@@ -254,9 +257,9 @@ class Employment extends Component {
 }
 const mapStateToProps = state => {
 	return {
-		employInfo: state.employmentInfo,
-		msgDisplay: state.messageDisplay,
-		appPageIndex: state.applicationPage,
+		employInfo   : state.employmentInfo,
+		msgDisplay   : state.messageDisplay,
+		appPageIndex : state.applicationPage,
 	};
 };
 export default connect(mapStateToProps, {

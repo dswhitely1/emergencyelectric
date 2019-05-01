@@ -58,7 +58,7 @@ class References extends Component {
 						ref='formReferences'
 						noValidate
 						validated={formValidation}
-						onSubmit={e => this.UNSAFE_componentWillMount.handleSubmit(e)}>
+						onSubmit={e => this.handleSubmit(e)}>
 						<h3 className='mb-1'>Employment Application</h3>
 						<h2 className='mb-2'>References</h2>
 						<Form.Group as={Row}>
@@ -150,14 +150,14 @@ class References extends Component {
 								type='button'
 								variant='outline-success'
 								onClick={this.onPrevPageClick}>
-								Employment
+								Education
 							</Button>
 							<Button
 								onClick={this.onNextPageClick}
 								type='button'
 								variant='outline-success'
 								className='ml-auto'>
-								Next Section
+								Submit Application
 							</Button>
 						</Form.Row>
 					</Form>

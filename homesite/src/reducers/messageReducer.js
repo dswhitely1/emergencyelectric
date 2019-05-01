@@ -64,6 +64,8 @@ export default (state = INITIAL_STATE, action) => {
 				};
 			}
 			return { ...state, appId: action.payload.appId };
+		case C.RESET_APPID:
+			return { ...state, appId: null };
 		case C.UPDATE_EMPLOYMENT_DATA_DB:
 			if (action.payload.status === 'NE') {
 				return {

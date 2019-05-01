@@ -20,7 +20,7 @@ function Navigation() {
 					id='navbar'
 					className='text-center justify-content-center flex-column-md'>
 					<Scrollchor
-						className='d-lg-none shadow  nav-link text-light mr-0 font-weight-bold navbar-brand'
+						className='d-xl-none shadow  nav-link text-light mr-0 font-weight-bold navbar-brand'
 						to='#page-top'>
 						Emergency Electric Inc
 					</Scrollchor>
@@ -35,7 +35,7 @@ function Navigation() {
 					</Scrollchor>
 					<Scrollchor
 						to='#page-top'
-						className='d-none d-lg-inline-block shadow  nav-link text-light mr-0 font-weight-bold navbar-brand'>
+						className='d-none d-xl-inline-block shadow  nav-link text-light mr-0 font-weight-bold navbar-brand'>
 						Emergency Electric Inc
 					</Scrollchor>
 					<Scrollchor to='#testimonials' className=' nav-link text-light'>

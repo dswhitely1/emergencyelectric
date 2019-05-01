@@ -5,15 +5,11 @@ class MainPage extends Component {
 	render() {
 		return (
 			<Row className='text-center'>
-				<Col xs={2} className='bg-success text-light'>
-					<p>Side Menu</p>
-				</Col>
+				<Col xs={2} className='bg-success text-light' />
 				<Col xs={8}>
 					<Application />
 				</Col>
-				<Col xs={2} className='bg-success text-light'>
-					<p>Right Content</p>
-				</Col>
+				<Col xs={2} className='bg-success text-light' />
 			</Row>
 		);
 	}

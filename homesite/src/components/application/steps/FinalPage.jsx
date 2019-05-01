@@ -41,7 +41,7 @@ class FinalPage extends Component {
 						<strong className='font-weight-bold text-uppercase'>
 							Emergency Electric, Inc
 						</strong>{' '}
-						employ.
+						employment.
 					</p>
 					<p className='font-weight-bold p-1'>
 						I understand that this application is not an employment contract for
@@ -63,7 +63,7 @@ class FinalPage extends Component {
 						to its employees is intended to or can create an employment
 						contract, an offer of employment or any obligation on{' '}
 						<strong className='text-uppercase font-weight-bold'>
-							Emergency Electric, Inc
+							Emergency Electric, Inc's
 						</strong>{' '}
 						part.{' '}
 						<strong className='text-uppercase font-weight-bold'>

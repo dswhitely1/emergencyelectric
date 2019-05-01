@@ -32,11 +32,14 @@ class PersonalData1 extends Component {
 		} = this.props.persData;
 
 		const form = this.refs.formPersonalData;
-		e.preventDefault();
-		e.stopPropagation();
+
 		if (!form.checkValidity()) {
 			e.preventDefault();
 			e.stopPropagation();
+			this.props.applicationMessage(
+				'Please fill out all the forms that are marked with a star.',
+			);
+			return;
 		}
 		if (!scheduleFullTime && !schedulePartTime && !scheduleTemporary) {
 			this.props.applicationMessage(
@@ -69,8 +72,10 @@ class PersonalData1 extends Component {
 		if (form.checkValidity()) {
 			this.props.sendPersonalDataDB1(this.props.persData);
 		}
-		const nextNum = this.props.appPageIndex.page + 1;
-		this.props.nextApplicationPage(nextNum);
+		if (this.props.msgDisplay.variant !== 'primary') {
+			const nextNum = this.props.appPageIndex.page + 1;
+			this.props.nextApplicationPage(nextNum);
+		}
 	};
 	onHandleCheckBox = e => {
 		if (this.props.msgDisplay.messageDisplay === true) {
@@ -140,7 +145,7 @@ class PersonalData1 extends Component {
 								<Form.Control
 									type='text'
 									id='firstName'
-									placeholder='First Name'
+									placeholder='First Name *'
 									value={firstName}
 									required
 									onChange={this.onInputChange}
@@ -162,7 +167,7 @@ class PersonalData1 extends Component {
 								<Form.Control
 									type='text'
 									id='lastName'
-									placeholder='Last Name'
+									placeholder='Last Name*'
 									value={lastName}
 									required
 									onChange={this.onInputChange}
@@ -186,7 +191,7 @@ class PersonalData1 extends Component {
 								<Form.Control
 									type='text'
 									id='address'
-									placeholder='Address'
+									placeholder='Address*'
 									value={address}
 									required
 									onChange={this.onInputChange}
@@ -210,7 +215,7 @@ class PersonalData1 extends Component {
 								<Form.Control
 									type='text'
 									id='city'
-									placeholder='City'
+									placeholder='City*'
 									value={city}
 									onChange={this.onInputChange}
 									required
@@ -223,7 +228,7 @@ class PersonalData1 extends Component {
 								<Form.Control
 									type='text'
 									id='state'
-									placeholder='State'
+									placeholder='State*'
 									value={state}
 									onChange={this.onInputChange}
 									required
@@ -237,7 +242,7 @@ class PersonalData1 extends Component {
 									type='text'
 									pattern='[0-9]{5}'
 									id='zipcode'
-									placeholder='Zip Code'
+									placeholder='Zip Code*'
 									value={zipcode}
 									onChange={this.onInputChange}
 									required
@@ -253,7 +258,7 @@ class PersonalData1 extends Component {
 									type='text'
 									pattern='[0-9]{10}'
 									id='phoneNumber'
-									placeholder='Phone Number'
+									placeholder='Phone Number ex 8125551212*'
 									value={phoneNumber}
 									onChange={this.onInputChange}
 									required
@@ -267,7 +272,7 @@ class PersonalData1 extends Component {
 									type='text'
 									pattern='[0-9]{10}'
 									id='alternatePhoneNumber'
-									placeholder='Alt Phone Number'
+									placeholder='Alt Phone Number ex 8125551212'
 									value={alternatePhoneNumber}
 									onChange={this.onInputChange}
 								/>
@@ -279,7 +284,7 @@ class PersonalData1 extends Component {
 								<Form.Control
 									type='email'
 									id='emailAddress'
-									placeholder='E-mail Address'
+									placeholder='E-mail Address*'
 									value={emailAddress}
 									onChange={this.onInputChange}
 									required
@@ -354,7 +359,7 @@ class PersonalData1 extends Component {
 							</Col>
 						</Form.Row>
 						<Form.Row>
-							<Form.Group as={Col} md={6}>
+							<Form.Group as={Col} md={4}>
 								<Form.Control
 									type='text'
 									id='howDidYouHearAboutUs'
@@ -363,12 +368,12 @@ class PersonalData1 extends Component {
 									onChange={this.onInputChange}
 								/>
 							</Form.Group>
-							<Form.Group as={Col} md={6}>
+							<Form.Group as={Col} md={4}>
 								<Form.Control
 									type='text'
 									id='desiredPay'
 									pattern='[0-9]{1,2}\.[0-9]{2}'
-									placeholder='Desired Pay'
+									placeholder='Desired Pay* example 10.00'
 									required
 									value={desiredPay}
 									onChange={this.onInputChange}
@@ -377,8 +382,24 @@ class PersonalData1 extends Component {
 									Required, example 10.00
 								</Form.Control.Feedback>
 							</Form.Group>
+							<Form.Group as={Col} md={4}>
+								<Form.Control
+									required
+									type='text'
+									id='positionDesired'
+									placeholder='Position Applying For*'
+									value={positionDesired}
+									onChange={this.onInputChange}
+								/>
+								<Form.Control.Feedback type='invalid'>
+									Required
+								</Form.Control.Feedback>
+							</Form.Group>
 						</Form.Row>
 						<Form.Row>
+							<Col md={6}>
+								<Form.Label>Date you are Available to Start*</Form.Label>
+							</Col>
 							<Form.Group as={Col} md={6}>
 								<Form.Control
 									type='date'
@@ -386,19 +407,6 @@ class PersonalData1 extends Component {
 									placeholder='Date Available To Start'
 									value={whenAreYouAbleToStartWork}
 									required
-									onChange={this.onInputChange}
-								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
-							</Form.Group>
-							<Form.Group as={Col} md={6}>
-								<Form.Control
-									required
-									type='text'
-									id='positionDesired'
-									placeholder='Position Applying For'
-									value={positionDesired}
 									onChange={this.onInputChange}
 								/>
 								<Form.Control.Feedback type='invalid'>

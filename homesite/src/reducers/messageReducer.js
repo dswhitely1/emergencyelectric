@@ -63,7 +63,14 @@ export default (state = INITIAL_STATE, action) => {
 						'Network is unreachable, please try your request later.',
 				};
 			}
-			return { ...state, appId: action.payload.appId };
+			return {
+				...state,
+				appId: action.payload.appId,
+				res: '',
+				messageDisplay: true,
+				variant: 'info',
+				message: 'Your application has been started',
+			};
 		case C.RESET_APPID:
 			return { ...state, appId: null };
 		case C.UPDATE_EMPLOYMENT_DATA_DB:
@@ -116,7 +123,7 @@ export default (state = INITIAL_STATE, action) => {
 				...state,
 				messageDisplay : true,
 				variant        : 'info',
-				message        : `You're education information has been updated.`,
+				message        : `You're references information has been updated.`,
 			};
 		default:
 			return state;

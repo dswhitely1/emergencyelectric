@@ -77,9 +77,44 @@ export default (state = INITIAL_STATE, action) => {
 			}
 			return {
 				...state,
-				messageDisplay: true,
-				variant: 'info',
-				message: `You're employment information has been updated.`,
+				messageDisplay : true,
+				variant        : 'info',
+				message        : `You're employment information has been updated.`,
+			};
+
+		case C.UPDATE_EDUCATION_DATA_DB:
+			if (action.payload.status === 'NE') {
+				return {
+					...state,
+					res            : '',
+					messageDisplay : true,
+					variant        : 'primary',
+					message        :
+						'Network is unreachable, please try your request later.',
+				};
+			}
+			return {
+				...state,
+				messageDisplay : true,
+				variant        : 'info',
+				message        : `You're education information has been updated.`,
+			};
+		case C.UPDATE_REFERENCE_DATA_DB:
+			if (action.payload.status === 'NE') {
+				return {
+					...state,
+					res            : '',
+					messageDisplay : true,
+					variant        : 'primary',
+					message        :
+						'Network is unreachable, please try your request later.',
+				};
+			}
+			return {
+				...state,
+				messageDisplay : true,
+				variant        : 'info',
+				message        : `You're education information has been updated.`,
 			};
 		default:
 			return state;

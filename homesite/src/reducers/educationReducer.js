@@ -18,6 +18,17 @@ export default (state = INITIAL_STATE, action) => {
 			return { ...state, graduate: action.payload.graduate };
 		case C.UPDATE_DEGREE_CHANGE:
 			return { ...state, degree: action.payload.degree };
+		case C.EDUCATION_FORM_VALIDATION:
+			return { ...state, formValidation: action.payload.formValidation };
+		case C.EDUCATION_FORM_CLEAR:
+			return {
+				...state,
+				formValidation : action.payload.formValidation,
+				schoolName     : action.payload.schoolName,
+				subject        : action.payload.subject,
+				graduate       : action.payload.graduate,
+				degree         : action.payload.degree,
+			};
 		default:
 			return state;
 	}

@@ -1,6 +1,5 @@
 import API from '../api';
 import C from './types';
-import { defaultCipherList } from 'constants';
 
 export const formValidation = value => {
 	return {
@@ -280,6 +279,35 @@ export const sendEmploymentData = values => async dispatch => {
 	dispatch({ type: C.UPDATE_EMPLOYMENT_DATA_DB, payload: resp });
 };
 
+export const sendEducationData = values => async dispatch => {
+	const response = await API.post(
+		'/application/education',
+		values,
+	).catch(err => {
+		const resp = { status: 'NE' };
+		dispatch({ type: C.UPDATE_EDUCATION_DATA_DB, payload: resp });
+	});
+	const resp =
+
+			response === undefined ? { status: 'NE' } :
+			response.data;
+	dispatch({ type: C.UPDATE_EDUCATION_DATA_DB, payload: resp });
+};
+
+export const sendReferenceData = values => async dispatch => {
+	const response = await API.post(
+		'/application/reference',
+		values,
+	).catch(err => {
+		const resp = { status: 'NE' };
+		dispatch({ type: C.UPDATE_REFERENCE_DATA_DB, payload: resp });
+	});
+	const resp =
+
+			response === undefined ? { status: 'NE' } :
+			response.data;
+	dispatch({ type: C.UPDATE_REFERENCE_DATA_DB, payload: resp });
+};
 export const employmentInfoChange = (item, value) => {
 	switch (item) {
 		case 'companyName':
@@ -351,8 +379,8 @@ export const educationFormChange = (item, value) => {
 	switch (item) {
 		case 'schoolName':
 			return {
-				type: C.UPDATE_SCHOOLNAME_CHANGE,
-				payload: { schoolName: value },
+				type    : C.UPDATE_SCHOOLNAME_CHANGE,
+				payload : { schoolName: value },
 			};
 		case 'subject':
 			return { type: C.UPDATE_SUBJECT_CHANGE, payload: { subject: value } };
@@ -363,4 +391,62 @@ export const educationFormChange = (item, value) => {
 		default:
 			return null;
 	}
+};
+
+export const educationFormValidation = value => {
+	return {
+		type    : C.EDUCATION_FORM_VALIDATION,
+		payload : { formValidation: value },
+	};
+};
+
+export const clearEducationForm = () => {
+	return {
+		type    : C.EDUCATION_FORM_CLEAR,
+		payload : {
+			formValidation : false,
+			schoolName     : '',
+			subject        : '',
+			graduate       : '',
+			degree         : '',
+		},
+	};
+};
+
+export const referenceFormChange = (item, value) => {
+	switch (item) {
+		case 'name':
+			return { type: C.UPDATE_NAME_CHANGE, payload: { name: value } };
+		case 'relationship':
+			return {
+				type    : C.UPDATE_RELATIONSHIP_CHANGE,
+				payload : { relationship: value },
+			};
+		case 'years':
+			return { type: C.UPDATE_YEARS_CHANGE, payload: { years: value } };
+		case 'phone':
+			return { type: C.UPDATE_PHONE_CHANGE, payload: { phone: value } };
+		default:
+			return null;
+	}
+};
+
+export const clearReferenceForm = () => {
+	return {
+		type    : C.REFERENCE_FORM_CLEAR,
+		payload : {
+			formValidation : false,
+			name           : '',
+			relationship   : '',
+			years          : '',
+			phone          : '',
+		},
+	};
+};
+
+export const referenceFormValidation = value => {
+	return {
+		type    : C.REFERENCE_FORM_VALIDATION,
+		payload : { formValidation: value },
+	};
 };

@@ -1,12 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Container, Form, Row, Col, Button } from 'react-bootstrap';
-import { educationFormChange } from '../../../actions';
+import {
+	educationFormChange,
+	educationFormValidation,
+	sendEducationData,
+	clearEducationForm,
+	prevApplicationPage,
+	nextApplicationPage,
+} from '../../../actions';
 class Education extends Component {
 	handleSubmit = e => {
 		const { schoolName, subject, graduate, degree } = this.props.educateMe;
 		const { appId } = this.props.msgDisplay;
-		const form = this.refs.formEmployment;
+		const form = this.refs.formEducation;
+		console.log(form);
+		const sendResponse = {
+			parentid   : appId,
+			schoolName : schoolName,
+			subject    : subject,
+			graduate   : graduate,
+			degree     : degree,
+		};
+		e.preventDefault();
+		e.stopPropagation();
+		if (!form.checkValidity()) {
+			e.preventDefault();
+			e.stopPropagation();
+		}
+		this.props.educationFormValidation(true);
+		if (form.checkValidity()) {
+			this.props.sendEducationData(sendResponse);
+			this.props.clearEducationForm();
+		}
+	};
+	onNextPageClick = () => {
+		let num = this.props.appPageIndex.page + 1;
+		this.props.prevApplicationPage(num);
+	};
+	onPrevPageClick = () => {
+		let num = this.props.appPageIndex.page - 1;
+		this.props.prevApplicationPage(num);
 	};
 	onInputChange = e => {
 		if (this.props.msgDisplay.messageDisplay === true) {
@@ -64,13 +98,11 @@ class Education extends Component {
 							</Form.Label>
 							<Col md={7}>
 								<Form.Control
-									as='select'
+									type='text'
 									id='graduate'
 									onChange={this.onInputChange}
-									value={graduate}>
-									<option>Yes</option>
-									<option>No</option>
-								</Form.Control>
+									value={graduate}
+								/>
 								<Form.Control.Feedback>Required</Form.Control.Feedback>
 							</Col>
 						</Form.Group>
@@ -96,15 +128,19 @@ class Education extends Component {
 								type='button'
 								variant='outline-success'
 								className='ml-auto'
-								onclick={this.handleSubmit}>
+								onClick={this.handleSubmit}>
 								Add Education
 							</Button>
 						</Form.Row>
 						<Form.Row>
-							<Button type='button' variant='outline-success'>
+							<Button
+								type='button'
+								variant='outline-success'
+								onClick={this.onPrevPageClick}>
 								Employment
 							</Button>
 							<Button
+								onClick={this.onNextPageClick}
 								type='button'
 								variant='outline-success'
 								className='ml-auto'>
@@ -125,4 +161,11 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps, { educationFormChange })(Education);
+export default connect(mapStateToProps, {
+	educationFormChange,
+	educationFormValidation,
+	sendEducationData,
+	clearEducationForm,
+	prevApplicationPage,
+	nextApplicationPage,
+})(Education);

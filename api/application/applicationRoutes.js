@@ -84,7 +84,23 @@ router.post('/education', (req, res) => {
 	console.log(message);
 	db
 		.insert(message)
-		.into('educatoin')
+		.into('education')
+		.then(ids => {
+			console.log(ids);
+			res.status(201).json(ids);
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(500).json(err);
+		});
+});
+
+router.post('/reference', (req, res) => {
+	const message = req.body;
+	console.log(message);
+	db
+		.insert(message)
+		.into('references')
 		.then(ids => {
 			console.log(ids);
 			res.status(201).json(ids);

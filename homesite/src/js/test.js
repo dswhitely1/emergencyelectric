@@ -1,4 +1,4 @@
-const names = [ 'schoolName', 'subject', 'graduate', 'degree' ];
+const names = [ 'name', 'relationship', 'years', 'phone' ];
 const giveMeTypes = () => {
 	for (let i = 0; i < names.length; i++) {
 		console.log(

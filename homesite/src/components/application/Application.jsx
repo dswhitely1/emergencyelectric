@@ -7,6 +7,7 @@ import Introduction2 from './steps/Introduction2';
 import MessageDisplay from '../index/MessageDisplay';
 import Employment from './steps/Employment';
 import Education from './steps/Education';
+import References from './steps/References';
 class Application extends Component {
 	render() {
 		const { page } = this.props.appPageIndex;
@@ -20,7 +21,8 @@ class Application extends Component {
 					page === 1 ? <Introduction2 /> :
 					page === 2 ? <PersonalData1 /> :
 					page === 3 ? <Employment /> :
-					<Education />}
+					page === 4 ? <Education /> :
+					<References />}
 			</div>
 		);
 	}

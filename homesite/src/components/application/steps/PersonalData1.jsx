@@ -68,6 +68,8 @@ class PersonalData1 extends Component {
 			this.props.applicationMessage('Do you have a work permit?');
 			return;
 		}
+		e.preventDefault();
+		e.stopPropagation();
 		this.props.personalDataFormValidation(true);
 		if (form.checkValidity()) {
 			this.props.sendPersonalDataDB1(this.props.persData);
@@ -476,14 +478,14 @@ class PersonalData1 extends Component {
 
 						<Button
 							type='submit'
-							variant='outline-success'
+							variant='outline-info'
 							className='float-right'
 							onClick={this.handleSubmit}
 							ref={`continue`}>
 							Continue
 						</Button>
 						<Button
-							variant='outline-success'
+							variant='outline-info'
 							className='float-left'
 							onClick={this.onPrevPageClick}>
 							Previous

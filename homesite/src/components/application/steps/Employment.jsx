@@ -228,7 +228,7 @@ class Employment extends Component {
 							</p>
 							<Button
 								type='button'
-								variant='outline-success'
+								variant='outline-info'
 								className='ml-auto'
 								onClick={this.handleSubmit}>
 								Add Employers
@@ -237,14 +237,14 @@ class Employment extends Component {
 						<Form.Row>
 							<Button
 								type='button'
-								variant='outline-success'
+								variant='outline-info'
 								onClick={this.onPrevPageClick}>
 								Personal Data
 							</Button>
 							<Button
 								onClick={this.onNextPageClick}
 								type='button'
-								variant='outline-success'
+								variant='outline-info'
 								className='ml-auto'>
 								Education
 							</Button>

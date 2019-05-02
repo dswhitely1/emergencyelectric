@@ -13,7 +13,7 @@ import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons';
 const Services = () => {
 	return (
 		<section
-			className='ee-content-section bg-danger text-dark text-center'
+			className='ee-content-section bg-warning text-secondary text-center'
 			id='services'>
 			<Container>
 				<h3 className='mb-1'>Services</h3>
@@ -22,7 +22,7 @@ const Services = () => {
 					<Col lg={4} md={12} className='mb-5 mb-lg-0'>
 						<Image src={residential} thumbnail={true} className='mb-2' />
 						<h4>Residential</h4>
-						<p>
+						<p className='lead'>
 							Emergency Electric, Inc can assist with any type of residential
 							renovation, whether you are building an extension to your home or
 							installing recessed lights in your condo.
@@ -31,7 +31,7 @@ const Services = () => {
 					<Col lg={4} md={12} className='mb-5 mb-lg-0'>
 						<Image src={commercial} thumbnail={true} className='mb-2' />
 						<h4>Commercial</h4>
-						<p>
+						<p className='lead'>
 							Emergency Electric, Inc offers a variety of commercial services,
 							by our commercial electrical contractors.
 						</p>
@@ -39,7 +39,7 @@ const Services = () => {
 					<Col lg={4} md={12} className='mb-5 mb-lg-0'>
 						<Image src={industrial} thumbnail={true} className='mb-2' />
 						<h4>Industrial</h4>
-						<p>
+						<p className='lead'>
 							Emergency Electric, Inc offers a variety of industrial services by
 							our industrial electrical contractors.
 						</p>
@@ -47,10 +47,10 @@ const Services = () => {
 				</Row>
 				<Scrollchor
 					to='#testimonials'
-					className='btn btn-outline-dark btn-lg mr-2'>
+					className='btn btn-outline-light btn-lg mr-2'>
 					What Others Say
 				</Scrollchor>
-				<Scrollchor to='#page-top' className='btn btn-outline-dark btn-lg'>
+				<Scrollchor to='#page-top' className='btn btn-outline-light btn-lg'>
 					<FontAwesomeIcon icon={faAngleDoubleUp} />
 				</Scrollchor>
 			</Container>

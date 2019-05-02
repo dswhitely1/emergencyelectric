@@ -36,13 +36,13 @@ class Introduction2 extends Component {
 								identification and employment authorization.{' '}
 							</p>
 							<Button
-								variant='outline-success'
+								variant='outline-info'
 								className='float-right'
 								onClick={this.onNextPageClick}>
 								Continue
 							</Button>
 							<Button
-								variant='outline-success'
+								variant='outline-info'
 								className='float-left'
 								onClick={this.onPrevPageClick}>
 								Previous

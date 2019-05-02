@@ -6,7 +6,7 @@ import Scrollchor from 'react-scrollchor';
 function Navigation() {
 	return (
 		<Navbar
-			bg='success'
+			bg='primary'
 			variant='dark'
 			expand='xl'
 			fixed='top'
@@ -20,17 +20,17 @@ function Navigation() {
 					id='navbar'
 					className='text-center justify-content-center flex-column-md'>
 					<Scrollchor
-						className='d-xl-none shadow  nav-link text-light mr-0 font-weight-bold navbar-brand'
+						className='d-xl-none shadow  nav-link text-light mr-0 font-weight-bold  navbar-brand'
 						to='#page-top'>
 						Emergency Electric Inc
 					</Scrollchor>
-					<Scrollchor to='#page-top' className=' nav-link text-light'>
+					<Scrollchor to='#page-top' className=' nav-link text-light small'>
 						Home
 					</Scrollchor>
-					<Scrollchor to='#about' className=' nav-link text-light'>
+					<Scrollchor to='#about' className=' nav-link text-light small'>
 						About
 					</Scrollchor>
-					<Scrollchor to='#services' className=' nav-link text-light'>
+					<Scrollchor to='#services' className=' nav-link text-light small'>
 						Services
 					</Scrollchor>
 					<Scrollchor
@@ -38,13 +38,13 @@ function Navigation() {
 						className='d-none d-xl-inline-block shadow  nav-link text-light mr-0 font-weight-bold navbar-brand'>
 						Emergency Electric Inc
 					</Scrollchor>
-					<Scrollchor to='#testimonials' className=' nav-link text-light'>
+					<Scrollchor to='#testimonials' className=' nav-link text-light small'>
 						Testimonials
 					</Scrollchor>
-					<Scrollchor to='#goals' className=' nav-link text-light'>
+					<Scrollchor to='#goals' className=' nav-link text-light small'>
 						Goals
 					</Scrollchor>
-					<Scrollchor to='#contact' className=' nav-link text-light'>
+					<Scrollchor to='#contact' className=' nav-link text-light small'>
 						Contact
 					</Scrollchor>
 				</Navbar.Collapse>

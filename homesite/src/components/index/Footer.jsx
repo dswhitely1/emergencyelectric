@@ -13,7 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 const Footer = () => {
 	return (
-		<footer className='bg-dark text-light text-center ee-content-section pb-0 pt-sm-5'>
+		<footer className='bg-dark text-secondary text-center ee-content-section pb-0 pt-sm-5'>
 			<Container className='my-auto'>
 				<Row className='mb-md-1'>
 					<Col lg={4} className='mb-md-3'>
@@ -25,18 +25,18 @@ const Footer = () => {
 					<Col lg={4} className='mb-md-3'>
 						<h3 className='mb-4'>Contacts</h3>
 						<ButtonGroup vertical className='mb-sm-3'>
-							<Button variant='success' href='tel:18129526014' size='lg'>
+							<Button variant='primary' href='tel:18129526014' size='lg'>
 								<FontAwesomeIcon icon={faPhone} className='mr-2' />
 								{`(812) 952-6014`}
 							</Button>
-							<Button variant='success' href='tel:15027274923' size='lg'>
+							<Button variant='primary' href='tel:15027274923' size='lg'>
 								<FontAwesomeIcon icon={faMobile} className='mr-2' />
 								{`(502) 727-4923`}
 							</Button>
 							<Button
 								size='lg'
 								href='mailto:emergency_electric.com'
-								variant='success'>
+								variant='primary'>
 								<FontAwesomeIcon icon={faEnvelope} className='mr-2' />
 								{`Email Us`}
 							</Button>
@@ -57,7 +57,10 @@ const Footer = () => {
 							{` 2019 - All Rights Reserved`}
 						</p>
 						<p className='text-center'>Designed by</p>
-						<Button size='sm' variant='info' href='https://www.donwhitely.com'>
+						<Button
+							size='sm'
+							variant='outline-success'
+							href='https://www.donwhitely.com'>
 							Digital Solutions by Don
 						</Button>
 					</Col>

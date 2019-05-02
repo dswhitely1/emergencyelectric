@@ -16,7 +16,7 @@ const ThankYou = () => {
 				inquire about your application, please give us a call between the hours
 				of 8:00 AM and 12:00 PM Monday - Friday at (812) 952-6014.
 			</p>
-			<Button href='/' variant='outline-success'>
+			<Button href='/' variant='outline-info'>
 				Back to the Home Page
 			</Button>
 		</section>

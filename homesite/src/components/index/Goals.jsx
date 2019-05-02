@@ -7,7 +7,7 @@ import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons';
 const Goals = () => {
 	return (
 		<section
-			className='ee-content-section bg-danger text-dark text-center'
+			className='ee-content-section bg-dark text-secondary text-center'
 			id='goals'>
 			<Container>
 				<h2 className='mb-5'>Our Goals</h2>
@@ -20,10 +20,10 @@ const Goals = () => {
 					Our intent is to earn and maintain the respect and trust of everyone
 					we come in contact with when representing Emergency Electric Inc.
 				</p>
-				<Scrollchor to='#contact' className='btn btn-outline-dark btn-lg mr-2'>
+				<Scrollchor to='#contact' className='btn btn-outline-light btn-lg mr-2'>
 					Contact Us
 				</Scrollchor>
-				<Scrollchor to='#page-top' className='btn btn-outline-dark btn-lg'>
+				<Scrollchor to='#page-top' className='btn btn-outline-light btn-lg'>
 					<FontAwesomeIcon icon={faAngleDoubleUp} />
 				</Scrollchor>
 			</Container>

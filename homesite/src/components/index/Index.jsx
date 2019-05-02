@@ -10,20 +10,16 @@ import MessageDisplay from './MessageDisplay';
 class Index extends Component {
 	render() {
 		return (
-			<Row className='text-center'>
-				<Col sm={1} className='bg-success' />
-				<Col sm={10} className='bg-success'>
-					<About />
-					<Services />
-					<Testimonials />
-					<Goals />
-					<Contact />
-					{
-						this.props.msgDisplay.messageDisplay ? <MessageDisplay /> :
-						null}
-				</Col>
-				<Col sm={1} className='bg-success' />
-			</Row>
+			<section>
+				<About />
+				<Services />
+				<Testimonials />
+				<Goals />
+				<Contact />
+				{
+					this.props.msgDisplay.messageDisplay ? <MessageDisplay /> :
+					null}
+			</section>
 		);
 	}
 }

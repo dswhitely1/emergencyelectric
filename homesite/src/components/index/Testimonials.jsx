@@ -9,7 +9,7 @@ import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons';
 const Testimonials = () => {
 	return (
 		<section
-			className='ee-content-section bg-light text-center'
+			className='ee-content-section bg-light text-dark text-center'
 			id='testimonials'>
 			<Container>
 				<h3 className='mb-1'>Testimonials</h3>
@@ -42,10 +42,10 @@ const Testimonials = () => {
 						</blockquote>
 					</Col>
 				</Row>
-				<Scrollchor to='#goals' className='btn btn-danger btn-lg mr-2'>
+				<Scrollchor to='#goals' className='btn btn-warning btn-lg mr-2'>
 					Our Goals
 				</Scrollchor>
-				<Scrollchor to='#page-top' className='btn btn-danger btn-lg'>
+				<Scrollchor to='#page-top' className='btn btn-warning btn-lg'>
 					<FontAwesomeIcon icon={faAngleDoubleUp} />
 				</Scrollchor>
 			</Container>

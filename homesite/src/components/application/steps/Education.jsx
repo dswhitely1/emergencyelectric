@@ -127,7 +127,7 @@ class Education extends Component {
 							<p className='lead'>Click add Education to add more Education</p>
 							<Button
 								type='button'
-								variant='outline-success'
+								variant='outline-info'
 								className='ml-auto'
 								onClick={this.handleSubmit}>
 								Add Education
@@ -136,14 +136,14 @@ class Education extends Component {
 						<Form.Row>
 							<Button
 								type='button'
-								variant='outline-success'
+								variant='outline-info'
 								onClick={this.onPrevPageClick}>
 								Employment
 							</Button>
 							<Button
 								onClick={this.onNextPageClick}
 								type='button'
-								variant='outline-success'
+								variant='outline-info'
 								className='ml-auto'>
 								References
 							</Button>

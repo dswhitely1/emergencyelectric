@@ -82,7 +82,7 @@ class Contact extends Component {
 			message,
 		} = this.props.messageForm;
 		return (
-			<section className='ee-content-section bg-light' id='contact'>
+			<section className='ee-content-section bg-light text-dark' id='contact'>
 				<Container className=''>
 					<h3 className='mb-1 text-center'>Contact Us</h3>
 					<h2 className='mb-5 text-center'>Send Us a Message!</h2>
@@ -149,14 +149,14 @@ class Contact extends Component {
 								onChange={this.handleMessageChange}
 							/>
 						</Form.Group>
-						<Button type='submit' variant='danger' className='mr-2' size='lg'>
+						<Button type='submit' variant='warning' className='mr-2' size='lg'>
 							{
 								this.props.messageAlert.isSending ? `Sending` :
 								`Send Message`}
 						</Button>
 						<Button
 							type='button'
-							variant='outline-danger'
+							variant='outline-warning'
 							size='lg'
 							onClick={this.handleClearForm}>
 							Clear Form
@@ -164,7 +164,7 @@ class Contact extends Component {
 
 						<Scrollchor
 							to='#page-top'
-							className='btn btn-danger btn-lg float-right'>
+							className='btn btn-warning btn-lg float-right'>
 							<FontAwesomeIcon icon={faAngleDoubleUp} />
 						</Scrollchor>
 					</Form>

@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons';
 const About = () => {
 	return (
-		<section className='ee-content-section bg-light' id='about'>
+		<section className='ee-content-section bg-light text-dark' id='about'>
 			<Container className='text-center'>
 				<Row>
 					<Col lg={10} className='mx-auto'>
@@ -29,10 +29,10 @@ const About = () => {
 							are confident that we meet this goal and that is why we offer a
 							100% customer satisfaction guarantee.
 						</p>
-						<Scrollchor to='#services' className='btn btn-danger btn-lg mr-2'>
+						<Scrollchor to='#services' className='btn btn-warning btn-lg mr-2'>
 							What We Offer
 						</Scrollchor>
-						<Scrollchor to='#page-top' className='btn btn-danger btn-lg'>
+						<Scrollchor to='#page-top' className='btn btn-warning btn-lg'>
 							<FontAwesomeIcon icon={faAngleDoubleUp} />
 						</Scrollchor>
 					</Col>

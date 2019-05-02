@@ -8,7 +8,7 @@ import { showMessageDisplay } from '../actions';
 import { Col } from 'react-bootstrap';
 import '../emergency_electric.min.css';
 import Index from './index/Index';
-import BottomNavigation from './index/BottomNavigation';
+
 class HomePage extends Component {
 	render() {
 		return (
@@ -16,7 +16,7 @@ class HomePage extends Component {
 				<Navigation />
 				<Header />
 				<Index />
-				<BottomNavigation />
+
 				<Footer />
 			</div>
 		);

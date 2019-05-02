@@ -37,7 +37,7 @@ class Introduction extends Component {
 								with disabilities in accordance with applicable laws.
 							</p>
 							<Button
-								variant='outline-success'
+								variant='outline-info'
 								className='float-right'
 								onClick={this.onNextPageClick}>
 								Continue

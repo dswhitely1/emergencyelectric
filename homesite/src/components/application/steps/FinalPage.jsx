@@ -91,7 +91,7 @@ class FinalPage extends Component {
 						qualifications.
 					</p>
 				</div>
-				<Button variant='outline-success' onClick={this.onHandleSubmit}>
+				<Button variant='outline-info' onClick={this.onHandleSubmit}>
 					Submit
 				</Button>
 			</section>

@@ -139,7 +139,7 @@ class References extends Component {
 							<p>`Click 'Add References' to Add References</p>
 							<Button
 								type='button'
-								variant='outline-success'
+								variant='outline-info'
 								className='ml-auto'
 								onClick={this.handleSubmit}>
 								Add References
@@ -148,14 +148,14 @@ class References extends Component {
 						<Form.Row>
 							<Button
 								type='button'
-								variant='outline-success'
+								variant='outline-info'
 								onClick={this.onPrevPageClick}>
 								Education
 							</Button>
 							<Button
 								onClick={this.onNextPageClick}
 								type='button'
-								variant='outline-success'
+								variant='outline-info'
 								className='ml-auto'>
 								Submit Application
 							</Button>

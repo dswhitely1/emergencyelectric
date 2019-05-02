@@ -7,7 +7,7 @@ import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons';
 const Goals = () => {
 	return (
 		<section
-			className='ee-content-section bg-dark text-secondary text-center'
+			className='ee-content-section bg-warning text-secondary text-center'
 			id='goals'>
 			<Container>
 				<h2 className='mb-5'>Our Goals</h2>

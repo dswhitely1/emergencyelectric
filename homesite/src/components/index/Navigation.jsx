@@ -18,7 +18,7 @@ function Navigation() {
 				/>
 				<Navbar.Collapse
 					id='navbar'
-					className='text-center justify-content-center flex-column-md'>
+					className='text-center justify-content-center flex-column-md text-secondary'>
 					<Scrollchor
 						className='d-xl-none shadow  nav-link text-light mr-0 font-weight-bold  navbar-brand'
 						to='#page-top'>

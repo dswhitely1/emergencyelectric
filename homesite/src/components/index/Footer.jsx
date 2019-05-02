@@ -57,10 +57,7 @@ const Footer = () => {
 							{` 2019 - All Rights Reserved`}
 						</p>
 						<p className='text-center'>Designed by</p>
-						<Button
-							size='sm'
-							variant='warning'
-							href='https://www.donwhitely.com'>
+						<Button size='sm' variant='info' href='https://www.donwhitely.com'>
 							Digital Solutions by Don
 						</Button>
 					</Col>

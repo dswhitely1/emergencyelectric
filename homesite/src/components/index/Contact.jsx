@@ -19,6 +19,9 @@ import {
 } from '../../actions';
 
 class Contact extends Component {
+	componentWillMount() {
+		this.props.updateFormButton(false);
+	}
 	handleSubmit(e) {
 		this.props.updateFormButton(true);
 		const form = e.currentTarget;
@@ -80,7 +83,7 @@ class Contact extends Component {
 		} = this.props.messageForm;
 		return (
 			<section className='ee-content-section bg-light' id='contact'>
-				<Container>
+				<Container className=''>
 					<h3 className='mb-1 text-center'>Contact Us</h3>
 					<h2 className='mb-5 text-center'>Send Us a Message!</h2>
 					<Form

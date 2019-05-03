@@ -6,7 +6,7 @@ import Header from './index/Header';
 import Footer from './index/Footer';
 import { showMessageDisplay } from '../actions';
 import { Col } from 'react-bootstrap';
-import '../emergency_electric.min.css';
+
 import Index from './index/Index';
 
 class HomePage extends Component {

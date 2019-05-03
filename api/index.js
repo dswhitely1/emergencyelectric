@@ -4,6 +4,7 @@ const messageRoutes = require('./message/messageRoutes');
 const applicationRoutes = require('./application/applicationRoutes');
 const adminRoutes = require('./admin/adminRoutes');
 const server = express();
+
 server.use(cors());
 server.use(express.json());
 server.use('/messages', messageRoutes);

@@ -20,7 +20,7 @@ export default (state = INITIAL_STATE, action) => {
 					...state,
 					res            : '',
 					messageDisplay : true,
-					variant        : 'primary',
+					variant        : 'danger',
 					isSending      : false,
 					message        :
 						'Network is unreachable, please try your request later.',
@@ -40,7 +40,7 @@ export default (state = INITIAL_STATE, action) => {
 					...state,
 					res            : action.payload.statusText,
 					messageDisplay : true,
-					variant        : 'primary',
+					variant        : 'danger',
 					isSending      : false,
 					message        : `You're message was not sent, please try again in a few moments.`,
 				};
@@ -49,7 +49,7 @@ export default (state = INITIAL_STATE, action) => {
 			return {
 				...state,
 				messageDisplay : true,
-				variant        : 'primary',
+				variant        : 'danger',
 				message        : action.payload.message,
 			};
 		case C.UPDATE_PERSONAL_DATA_DB_1:
@@ -58,18 +58,18 @@ export default (state = INITIAL_STATE, action) => {
 					...state,
 					res            : '',
 					messageDisplay : true,
-					variant        : 'primary',
+					variant        : 'danger',
 					message        :
 						'Network is unreachable, please try your request later.',
 				};
 			}
 			return {
 				...state,
-				appId: action.payload.appId,
-				res: '',
-				messageDisplay: true,
-				variant: 'info',
-				message: 'Your application has been started',
+				appId          : action.payload.appId,
+				res            : '',
+				messageDisplay : true,
+				variant        : 'info',
+				message        : 'Your application has been started',
 			};
 		case C.RESET_APPID:
 			return { ...state, appId: null };
@@ -79,7 +79,7 @@ export default (state = INITIAL_STATE, action) => {
 					...state,
 					res            : '',
 					messageDisplay : true,
-					variant        : 'primary',
+					variant        : 'danger',
 					message        :
 						'Network is unreachable, please try your request later.',
 				};
@@ -97,7 +97,7 @@ export default (state = INITIAL_STATE, action) => {
 					...state,
 					res            : '',
 					messageDisplay : true,
-					variant        : 'primary',
+					variant        : 'danger',
 					message        :
 						'Network is unreachable, please try your request later.',
 				};
@@ -114,7 +114,7 @@ export default (state = INITIAL_STATE, action) => {
 					...state,
 					res            : '',
 					messageDisplay : true,
-					variant        : 'primary',
+					variant        : 'danger',
 					message        :
 						'Network is unreachable, please try your request later.',
 				};

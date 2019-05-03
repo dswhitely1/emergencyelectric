@@ -5,7 +5,17 @@ const router = express.Router();
 const db = knex(knexConfig.development);
 
 router.get('/', (req, res) => {
-	res.status(200).send('Messages is working');
+	db
+		.select('*')
+		.from('messages')
+		.then(rows => {
+			console.log(rows.length);
+			res.status(200).json(rows);
+		})
+		.catch(err => {
+			console.log(err);
+			res.status(500).json(err);
+		});
 });
 
 router.post('/new-message', (req, res) => {

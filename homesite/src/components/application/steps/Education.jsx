@@ -52,7 +52,7 @@ class Education extends Component {
 	render() {
 		const { schoolName, subject, graduate, degree } = this.props.educateMe;
 		return (
-			<section className='ee-content-section'>
+			<section className='ee-content-section bg-light text-dark'>
 				<Container>
 					<Form
 						ref='formEducation'

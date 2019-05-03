@@ -88,7 +88,7 @@ class Employment extends Component {
 			contactNo,
 		} = this.props.employInfo;
 		return (
-			<section className='ee-content-section'>
+			<section className='ee-content-section bg-light text-dark'>
 				<Container>
 					<Form
 						ref='formEmployment'

@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 
 const ThankYou = () => {
 	return (
-		<section className='ee-content-section'>
+		<section className='ee-content-section bg-light text-dark'>
 			<h2>
 				Thank you for applying with <br />
 				<strong className='font-weight-bold text-uppercase'>

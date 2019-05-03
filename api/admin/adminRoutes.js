@@ -3,7 +3,18 @@ const knex = require('knex');
 const knexConfig = require('../knexfile');
 const router = express.Router();
 const db = knex(knexConfig.development);
-
+router.get('/', (req, res) => {
+	db
+		.select('*')
+		.from('personalData')
+		.then(rows => {
+			console.log(rows);
+			res.status(200).json(rows);
+		})
+		.catch(err => {
+			res.status(500).json(err);
+		});
+});
 router.get('/application/:id', (req, res) => {
 	const id = req.params.id;
 	db

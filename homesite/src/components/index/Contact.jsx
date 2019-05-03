@@ -73,23 +73,13 @@ class Contact extends Component {
 		this.props.showMessageDisplay(false);
 	};
 	render() {
-		const {
-			validated,
-			firstName,
-			lastName,
-			email,
-			subject,
-			message,
-		} = this.props.messageForm;
+		const { validated, firstName, lastName, email, subject, message } = this.props.messageForm;
 		return (
 			<section className='ee-content-section bg-light text-dark' id='contact'>
 				<Container className=''>
 					<h3 className='mb-1 text-center'>Contact Us</h3>
 					<h2 className='mb-5 text-center'>Send Us a Message!</h2>
-					<Form
-						noValidate
-						validated={validated}
-						onSubmit={e => this.handleSubmit(e)}>
+					<Form noValidate validated={validated} onSubmit={e => this.handleSubmit(e)}>
 						<Form.Group controlId='formContact'>
 							<Row className='mb-2'>
 								<Col md={6} className='mb-sm-2 mb-md-0'>
@@ -100,9 +90,7 @@ class Contact extends Component {
 										placeholder='First Name'
 										onChange={this.handleFirstNameChange}
 									/>
-									<Form.Control.Feedback type='invalid'>
-										Required
-									</Form.Control.Feedback>
+									<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 								</Col>
 								<Col md={6}>
 									<Form.Control
@@ -112,9 +100,7 @@ class Contact extends Component {
 										placeholder='Last Name'
 										onChange={this.handleLastNameChange}
 									/>
-									<Form.Control.Feedback type='invalid'>
-										Required
-									</Form.Control.Feedback>
+									<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 								</Col>
 							</Row>
 							<Form.Control
@@ -125,9 +111,7 @@ class Contact extends Component {
 								placeholder='Email Address'
 								onChange={this.handleEmailChange}
 							/>
-							<Form.Control.Feedback type='invalid'>
-								Please provide a valid email address
-							</Form.Control.Feedback>
+							<Form.Control.Feedback type='invalid'>Please provide a valid email address</Form.Control.Feedback>
 							<Form.Control
 								required
 								value={subject}
@@ -136,9 +120,7 @@ class Contact extends Component {
 								placeholder='Subject'
 								onChange={this.handleSubjectChange}
 							/>
-							<Form.Control.Feedback type='invalid'>
-								Required
-							</Form.Control.Feedback>
+							<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							<Form.Control
 								as='textarea'
 								className='mb-2'
@@ -154,17 +136,11 @@ class Contact extends Component {
 								this.props.messageAlert.isSending ? `Sending` :
 								`Send Message`}
 						</Button>
-						<Button
-							type='button'
-							variant='outline-warning'
-							size='lg'
-							onClick={this.handleClearForm}>
+						<Button type='button' variant='outline-warning' size='lg' onClick={this.handleClearForm}>
 							Clear Form
 						</Button>
 
-						<Scrollchor
-							to='#page-top'
-							className='btn btn-warning btn-lg float-right'>
+						<Scrollchor to='#page-top' className='btn btn-warning btn-lg float-right'>
 							<FontAwesomeIcon icon={faAngleDoubleUp} />
 						</Scrollchor>
 					</Form>

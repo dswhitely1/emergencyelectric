@@ -1,20 +1,25 @@
-const names = [ 'name', 'relationship', 'years', 'phone' ];
+const names = [
+	'dog',
+	'cat',
+	'bear',
+	'banana',
+	'flackjacket',
+	'computer',
+	'wallrus',
+	'tabletop',
+	'cherries',
+	'doorknob',
+];
 const giveMeTypes = () => {
 	for (let i = 0; i < names.length; i++) {
-		console.log(
-			`UPDATE_${names[i].toUpperCase()}_CHANGE:"UPDATE_${names[
-				i
-			].toUpperCase()}_CHANGE",`,
-		);
+		console.log(`UPDATE_${names[i].toUpperCase()}_CHANGE:"UPDATE_${names[i].toUpperCase()}_CHANGE",`);
 	}
 };
 
 const giveMeActions = () => {
 	for (let i = 0; i < names.length; i++) {
 		console.log(
-			`case '${names[i]}': return {type: C.UPDATE_${names[
-				i
-			].toUpperCase()}_CHANGE, payload: { ${names[i]}: value}}`,
+			`case '${names[i]}': return {type: C.UPDATE_${names[i].toUpperCase()}_CHANGE, payload: { ${names[i]}: value}}`,
 		);
 	}
 };
@@ -22,11 +27,7 @@ const giveMeActions = () => {
 const giveMeReducers = () => {
 	for (let i = 0; i < names.length; i++) {
 		console.log(
-			`case C.UPDATE_${names[
-				i
-			].toUpperCase()}_CHANGE: return {...state, ${names[
-				i
-			]}: action.payload.${names[i]}}`,
+			`case C.UPDATE_${names[i].toUpperCase()}_CHANGE: return {...state, ${names[i]}: action.payload.${names[i]}}`,
 		);
 	}
 };

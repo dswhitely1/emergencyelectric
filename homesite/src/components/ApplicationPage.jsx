@@ -4,7 +4,7 @@ import Navigation from './application/Navigation';
 
 import Footer from './index/Footer';
 import { showMessageDisplay } from '../actions';
-import '../emergency_electric.min.css';
+
 import MainPage from './application/MainPage';
 import BottomNavigation from './application/BottomNavigation';
 class ApplicationPage extends Component {
@@ -23,6 +23,4 @@ class ApplicationPage extends Component {
 const mapStateToProps = state => {
 	return { msgDisplay: state.messageDisplay };
 };
-export default connect(mapStateToProps, { showMessageDisplay })(
-	ApplicationPage,
-);
+export default connect(mapStateToProps, { showMessageDisplay })(ApplicationPage);

@@ -18,7 +18,7 @@ import { BrowserRouter } from 'react-router-dom';
 // Import Main App
 import App from './components/App';
 //CSS Sheet
-import './bootstrap.min.css';
+import './css/emergency_electric.min.css';
 //ServiceWorker
 import * as serviceWorker from './serviceWorker';
 // Creation of the Redux Store
@@ -30,10 +30,7 @@ const persistConfig = {
 	whitelist       : [ 'messageDisplay' ],
 };
 const rootReducer = persistReducer(persistConfig, reducers);
-const store = createStore(
-	rootReducer,
-	composeWithDevTools(applyMiddleware(reduxThunk)),
-);
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(reduxThunk)));
 const persistor = persistStore(store);
 
 // Render the Webpage

@@ -9,7 +9,7 @@ class FinalPage extends Component {
 	};
 	render() {
 		return (
-			<section className='ee-content-section'>
+			<section className='ee-content-section bg-light text-dark'>
 				<h3 className='mb-1'>Employment Application</h3>
 				<h2 className='mb-2'>
 					Please read carefully before submitting the Application

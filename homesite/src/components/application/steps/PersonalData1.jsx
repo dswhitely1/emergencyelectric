@@ -74,7 +74,7 @@ class PersonalData1 extends Component {
 		if (form.checkValidity()) {
 			this.props.sendPersonalDataDB1(this.props.persData);
 		}
-		if (this.props.msgDisplay.variant !== 'primary') {
+		if (this.props.msgDisplay.variant !== 'danger') {
 			const nextNum = this.props.appPageIndex.page + 1;
 			this.props.nextApplicationPage(nextNum);
 		}
@@ -133,7 +133,7 @@ class PersonalData1 extends Component {
 			permitNo,
 		} = this.props.persData;
 		return (
-			<section className='ee-content-section'>
+			<section className='ee-content-section bg-light text-dark'>
 				<Container>
 					<Form
 						ref='formPersonalData'

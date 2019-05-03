@@ -52,7 +52,7 @@ class References extends Component {
 			phone,
 		} = this.props.refData;
 		return (
-			<section className='ee-content-section'>
+			<section className='ee-content-section bg-light text-dark'>
 				<Container>
 					<Form
 						ref='formReferences'

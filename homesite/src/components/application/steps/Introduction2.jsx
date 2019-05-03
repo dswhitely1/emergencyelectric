@@ -16,7 +16,7 @@ class Introduction2 extends Component {
 	render() {
 		return (
 			<div>
-				<section className='ee-content-section text-center'>
+				<section className='ee-content-section text-center bg-light text-dark'>
 					<Container>
 						<h3 className='mb-1'>Employment Application</h3>
 						<h2 className='mb-2'>Federal Law Requirements</h2>

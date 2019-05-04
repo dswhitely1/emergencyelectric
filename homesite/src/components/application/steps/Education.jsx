@@ -10,11 +10,13 @@ import {
 	nextApplicationPage,
 	showMessageDisplay,
 } from '../../../actions';
+
 class Education extends Component {
 	handleSubmit = e => {
 		const { schoolName, subject, graduate, degree } = this.props.educateMe;
 		const { appId } = this.props.msgDisplay;
 		const form = this.refs.formEducation;
+		const dataSent = [ schoolName, subject, graduate, degree ];
 		console.log(form);
 		const sendResponse = {
 			parentid   : appId,
@@ -54,11 +56,7 @@ class Education extends Component {
 		return (
 			<section className='ee-content-section bg-light text-dark'>
 				<Container>
-					<Form
-						ref='formEducation'
-						noValidate
-						validated={null}
-						onSubmit={e => this.handleSubmit(e)}>
+					<Form ref='formEducation' noValidate validated={null} onSubmit={e => this.handleSubmit(e)}>
 						<h3 className='mb-1'>Employment Application</h3>
 						<h2 className='mb-2'>Education</h2>
 						<Form.Group as={Row}>
@@ -98,12 +96,7 @@ class Education extends Component {
 								Did you Graduate
 							</Form.Label>
 							<Col md={7}>
-								<Form.Control
-									type='text'
-									id='graduate'
-									onChange={this.onInputChange}
-									value={graduate}
-								/>
+								<Form.Control type='text' id='graduate' onChange={this.onInputChange} value={graduate} />
 								<Form.Control.Feedback>Required</Form.Control.Feedback>
 							</Col>
 						</Form.Group>
@@ -125,26 +118,15 @@ class Education extends Component {
 						</Form.Group>
 						<Form.Row className='mb-2'>
 							<p className='lead'>Click add Education to add more Education</p>
-							<Button
-								type='button'
-								variant='outline-info'
-								className='ml-auto'
-								onClick={this.handleSubmit}>
+							<Button type='button' variant='outline-info' className='ml-auto' onClick={this.handleSubmit}>
 								Add Education
 							</Button>
 						</Form.Row>
 						<Form.Row>
-							<Button
-								type='button'
-								variant='outline-info'
-								onClick={this.onPrevPageClick}>
+							<Button type='button' variant='outline-info' onClick={this.onPrevPageClick}>
 								Employment
 							</Button>
-							<Button
-								onClick={this.onNextPageClick}
-								type='button'
-								variant='outline-info'
-								className='ml-auto'>
+							<Button onClick={this.onNextPageClick} type='button' variant='outline-info' className='ml-auto'>
 								References
 							</Button>
 						</Form.Row>

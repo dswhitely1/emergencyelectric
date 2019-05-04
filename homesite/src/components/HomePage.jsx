@@ -8,15 +8,16 @@ import { showMessageDisplay } from '../actions';
 import { Col } from 'react-bootstrap';
 
 import Index from './index/Index';
-
+import TableCreation from './admin/TableCreation';
+import R from '../js/constants';
 class HomePage extends Component {
 	render() {
+		const dataSent = [ 'South Oldham High School', 'Computer Science', 'Yes', 'High School Diploma' ];
 		return (
 			<div id='page-top'>
 				<Navigation />
 				<Header />
 				<Index />
-
 				<Footer />
 			</div>
 		);

@@ -12,7 +12,6 @@ import TableCreation from './admin/TableCreation';
 import R from '../js/constants';
 class HomePage extends Component {
 	render() {
-		const dataSent = [ 'South Oldham High School', 'Computer Science', 'Yes', 'High School Diploma' ];
 		return (
 			<div id='page-top'>
 				<Navigation />

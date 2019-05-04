@@ -12,42 +12,35 @@ import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons';
 
 const Services = () => {
 	return (
-		<section
-			className='ee-content-section bg-warning text-secondary text-center'
-			id='services'>
+		<section className='ee-content-section bg-warning text-secondary text-center' id='services'>
 			<Container>
 				<h3 className='mb-1'>Services</h3>
 				<h2 className='mb-5'>We Specialize In</h2>
 				<Row className='mb-5'>
 					<Col lg={4} md={12} className='mb-5 mb-lg-0'>
-						<Image src={residential} thumbnail={true} className='mb-2' />
+						<Image src={residential} thumbnail={true} className='mb-2' alt='Houses' />
 						<h4>Residential</h4>
 						<p className='lead'>
-							Emergency Electric, Inc can assist with any type of residential
-							renovation, whether you are building an extension to your home or
-							installing recessed lights in your condo.
+							Emergency Electric, Inc can assist with any type of residential renovation, whether you are building an
+							extension to your home or installing recessed lights in your condo.
 						</p>
 					</Col>
 					<Col lg={4} md={12} className='mb-5 mb-lg-0'>
-						<Image src={commercial} thumbnail={true} className='mb-2' />
+						<Image src={commercial} thumbnail={true} className='mb-2' alt='High Rise Buildings' />
 						<h4>Commercial</h4>
 						<p className='lead'>
-							Emergency Electric, Inc offers a variety of commercial services,
-							by our commercial electrical contractors.
+							Emergency Electric, Inc offers a variety of commercial services, by our commercial electrical contractors.
 						</p>
 					</Col>
 					<Col lg={4} md={12} className='mb-5 mb-lg-0'>
-						<Image src={industrial} thumbnail={true} className='mb-2' />
+						<Image src={industrial} thumbnail={true} className='mb-2' alt='Industrial Workplace' />
 						<h4>Industrial</h4>
 						<p className='lead'>
-							Emergency Electric, Inc offers a variety of industrial services by
-							our industrial electrical contractors.
+							Emergency Electric, Inc offers a variety of industrial services by our industrial electrical contractors.
 						</p>
 					</Col>
 				</Row>
-				<Scrollchor
-					to='#testimonials'
-					className='btn btn-outline-light btn-lg mr-2'>
+				<Scrollchor to='#testimonials' className='btn btn-outline-light btn-lg mr-2'>
 					What Others Say
 				</Scrollchor>
 				<Scrollchor to='#page-top' className='btn btn-outline-light btn-lg'>

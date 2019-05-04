@@ -5,20 +5,10 @@ import Button from 'react-bootstrap/Button';
 import Scrollchor from 'react-scrollchor';
 function Navigation() {
 	return (
-		<Navbar
-			bg='primary'
-			variant='dark'
-			expand='xl'
-			fixed='top'
-			className='text-uppercase'>
+		<Navbar bg='primary' variant='dark' expand='xl' fixed='top' className='text-uppercase'>
 			<Container className='justify-content-center mb-md-2 mb-lg-0'>
-				<Navbar.Toggle
-					aria-controls='navbar'
-					className='navbar-toggler-right border=0'
-				/>
-				<Navbar.Collapse
-					id='navbar'
-					className='text-center justify-content-center flex-column-md text-secondary'>
+				<Navbar.Toggle aria-controls='navbar' className='navbar-toggler-right border=0' />
+				<Navbar.Collapse id='navbar' className='text-center justify-content-center flex-column-md text-secondary'>
 					<Scrollchor
 						className='d-xl-none shadow  nav-link text-light mr-0 font-weight-bold  navbar-brand'
 						to='#page-top'>
@@ -48,12 +38,8 @@ function Navigation() {
 						Contact
 					</Scrollchor>
 				</Navbar.Collapse>
-				<Button
-					variant='outline-light'
-					className='ml-auto'
-					size='sm'
-					href='tel:15027274923'>
-					502-727-4923
+				<Button variant='outline-light' className='ml-auto' size='sm' href='tel:15027274923'>
+					502-727-4823
 				</Button>
 			</Container>
 		</Navbar>

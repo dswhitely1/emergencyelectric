@@ -10,9 +10,9 @@ function Header() {
 				<h1 className='mb-1 text-primary'>Emergency Electric Inc</h1>
 				<h3 className='mb-5 text-primary'>24 Hour Service | Licensed and Insured | Residential and Commercial</h3>
 				<Scrollchor className='btn btn-info btn-lg mr-4' to='#about'>
-					Find Our More
+					Find Out More
 				</Scrollchor>
-				<Button href='/apply' size='lg'>
+				<Button href='/apply' size='lg' disabled>
 					Apply Now
 				</Button>
 			</Container>

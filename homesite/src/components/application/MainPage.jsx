@@ -6,7 +6,7 @@ class MainPage extends Component {
 		return (
 			<Row className='text-center'>
 				<Col sm={2} className='bg-primary text-light' />
-				<Col sm={8}>
+				<Col sm={8} className='bg-light'>
 					<Application />
 				</Col>
 				<Col sm={2} className='bg-primary text-light' />

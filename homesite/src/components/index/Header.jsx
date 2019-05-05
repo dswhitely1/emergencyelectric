@@ -12,7 +12,7 @@ function Header() {
 				<Scrollchor className='btn btn-info btn-lg mr-4' to='#about'>
 					Find Out More
 				</Scrollchor>
-				<Button href='/apply' size='lg' disabled>
+				<Button href='/apply' variant='success' size='lg'>
 					Apply Now
 				</Button>
 			</Container>

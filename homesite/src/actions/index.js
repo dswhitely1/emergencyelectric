@@ -58,10 +58,7 @@ export const valueContactFormChange = (item, value) => {
 };
 
 export const sendMessage = values => async dispatch => {
-	const response = await API.post(
-		'/messages/new-message',
-		values,
-	).catch(error => {
+	const response = await API.post('/messages/new-message', values).catch(error => {
 		const resp = { status: 'NE' };
 		dispatch({ type: C.UPDATE_SERVER_RESPONSE, payload: resp });
 	});
@@ -247,10 +244,7 @@ export const personalDataFormValidation = value => {
 };
 
 export const sendPersonalDataDB1 = values => async dispatch => {
-	const response = await API.post(
-		'/application/persdata1',
-		values,
-	).catch(err => {
+	const response = await API.post('/application/persdata1', values).catch(err => {
 		const resp = { appId: 'NE' };
 		dispatch({ type: C.UPDATE_PERSONAL_DATA_DB_1, payload: resp });
 	});
@@ -265,10 +259,7 @@ export const sendPersonalDataDB1 = values => async dispatch => {
 };
 
 export const sendEmploymentData = values => async dispatch => {
-	const response = await API.post(
-		'/application/employment',
-		values,
-	).catch(err => {
+	const response = await API.post('/application/employment', values).catch(err => {
 		const resp = { status: 'NE' };
 		dispatch({ type: C.UPDATE_EMPLOYMENT_DATA_DB, payload: resp });
 	});
@@ -280,10 +271,7 @@ export const sendEmploymentData = values => async dispatch => {
 };
 
 export const sendEducationData = values => async dispatch => {
-	const response = await API.post(
-		'/application/education',
-		values,
-	).catch(err => {
+	const response = await API.post('/application/education', values).catch(err => {
 		const resp = { status: 'NE' };
 		dispatch({ type: C.UPDATE_EDUCATION_DATA_DB, payload: resp });
 	});
@@ -295,10 +283,7 @@ export const sendEducationData = values => async dispatch => {
 };
 
 export const sendReferenceData = values => async dispatch => {
-	const response = await API.post(
-		'/application/reference',
-		values,
-	).catch(err => {
+	const response = await API.post('/application/reference', values).catch(err => {
 		const resp = { status: 'NE' };
 		dispatch({ type: C.UPDATE_REFERENCE_DATA_DB, payload: resp });
 	});
@@ -455,4 +440,39 @@ export const resetAppId = () => {
 	return {
 		type : C.RESET_APPID,
 	};
+};
+
+export const fetchApplication = (appId, db) => async dispatch => {
+	const response = await API.get(`/admin/application/${db}/${appId}`).catch(err => {
+		const resp = { status: 'NE' };
+		dispatch({ type: C.FETCH_FAIL, payload: resp });
+	});
+	const resp =
+
+			response === undefined ? { status: 'NE' } :
+			response.data;
+	if (resp === undefined) {
+		dispatch({ type: C.FETCH_FAIL, payload: resp });
+	}
+	console.log(resp);
+	switch (db) {
+		case 'personalData':
+			dispatch({ type: C.FETCH_PERSONALDATA_DATA, payload: { personalData: resp } });
+			break;
+		case 'personalData2':
+			dispatch({ type: C.FETCH_PERSONALDATA2_DATA, payload: { personalData2: resp } });
+			break;
+		case 'employment':
+			dispatch({ type: C.FETCH_EMPLOYMENT_DATA, payload: { employment: resp } });
+			break;
+		case 'education':
+			dispatch({ type: C.FETCH_EDUCATION_DATA, payload: { education: resp } });
+			break;
+		case 'references':
+			dispatch({ type: C.FETCH_REFERENCES_DATA, payload: { references: resp } });
+			break;
+
+		default:
+			return null;
+	}
 };

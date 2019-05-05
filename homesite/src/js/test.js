@@ -1,4 +1,4 @@
-const names = [ 'Name', 'Relationship', 'Years Known', 'Phone Number' ];
+const names = [ 'personalData', 'personalData2', 'employment', 'education', 'references' ];
 const toCamelCase = str => {
 	return str
 		.toLowerCase()
@@ -10,14 +10,16 @@ const toCamelCase = str => {
 };
 const giveMeTypes = () => {
 	for (let i = 0; i < names.length; i++) {
-		console.log(`UPDATE_${names[i].toUpperCase()}_CHANGE:"UPDATE_${names[i].toUpperCase()}_CHANGE",`);
+		console.log(`FETCH_${names[i].toUpperCase()}_DATA:"FETCH_${names[i].toUpperCase()}_DATA",`);
 	}
 };
 
 const giveMeActions = () => {
 	for (let i = 0; i < names.length; i++) {
 		console.log(
-			`case '${names[i]}': return {type: C.UPDATE_${names[i].toUpperCase()}_CHANGE, payload: { ${names[i]}: value}}`,
+			`case '${names[i]}': dispatch({type: C.FETCH_${names[i].toUpperCase()}_DATA, payload: { ${names[
+				i
+			]}: resp}});break;`,
 		);
 	}
 };
@@ -25,7 +27,7 @@ const giveMeActions = () => {
 const giveMeReducers = () => {
 	for (let i = 0; i < names.length; i++) {
 		console.log(
-			`case C.UPDATE_${names[i].toUpperCase()}_CHANGE: return {...state, ${names[i]}: action.payload.${names[i]}}`,
+			`case C.FETCH_${names[i].toUpperCase()}_DATA: return {...state, ${names[i]}: action.payload.${names[i]}}`,
 		);
 	}
 };

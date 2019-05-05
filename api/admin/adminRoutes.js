@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 			res.status(500).json(err);
 		});
 });
-router.get('/application/:id', (req, res) => {
+router.get('/application/personalData/:id', (req, res) => {
 	const id = req.params.id;
 	db
 		.select('*')
@@ -30,7 +30,7 @@ router.get('/application/:id', (req, res) => {
 			res.status(500).json(err);
 		});
 });
-router.get('/application2/:id', (req, res) => {
+router.get('/application/personalData2/:id', (req, res) => {
 	const id = req.params.id;
 	db
 		.select('*')
@@ -45,7 +45,7 @@ router.get('/application2/:id', (req, res) => {
 			res.status(500).json(err);
 		});
 });
-router.get('/application3/:id', (req, res) => {
+router.get('/application/employment/:id', (req, res) => {
 	const id = req.params.id;
 	db
 		.select('*')
@@ -60,7 +60,7 @@ router.get('/application3/:id', (req, res) => {
 			res.status(500).json(err);
 		});
 });
-router.get('/application4/:id', (req, res) => {
+router.get('/application/education/:id', (req, res) => {
 	const id = req.params.id;
 	db
 		.select('*')
@@ -75,7 +75,7 @@ router.get('/application4/:id', (req, res) => {
 			res.status(500).json(err);
 		});
 });
-router.get('/application5/:id', (req, res) => {
+router.get('/application/references/:id', (req, res) => {
 	const id = req.params.id;
 	db
 		.select('*')

@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 
 function BottomNavigation() {
 	return (
-		<Navbar bg='primary' variant='dark' expand='sm' className='text-uppercase'>
+		<Navbar bg='primary' variant='dark' expand='sm'>
 			<Container className='justify-content-center mb-md-2 mb-lg-0'>
 				<Button href='/' variant='outline-secondary'>
 					Return Home

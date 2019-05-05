@@ -7,12 +7,14 @@ import personalDataReducer from './personalDataReducer';
 import employmentReducer from './employmentReducer';
 import educationReducer from './educationReducer';
 import referenceReducer from './referenceReducer';
+import applicationDisplayReducer from './applicationDisplayReducer';
 export default combineReducers({
-	formContact     : formReducer,
-	messageDisplay  : messageReducer,
-	applicationPage : applicationPageReducer,
-	personalData    : personalDataReducer,
-	employmentInfo  : employmentReducer,
-	educationInfo   : educationReducer,
-	references      : referenceReducer,
+	formContact        : formReducer,
+	messageDisplay     : messageReducer,
+	applicationPage    : applicationPageReducer,
+	personalData       : personalDataReducer,
+	employmentInfo     : employmentReducer,
+	educationInfo      : educationReducer,
+	references         : referenceReducer,
+	applicationDisplay : applicationDisplayReducer,
 });

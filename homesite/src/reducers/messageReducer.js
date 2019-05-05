@@ -12,6 +12,15 @@ export default (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case C.SHOW_MESSAGE_DISPLAY:
 			return { ...state, messageDisplay: action.payload.messageDisplay };
+		case C.FETCH_FAIL:
+			return {
+				...state,
+				res            : '',
+				messageDisplay : true,
+				variant        : 'danger',
+				isSending      : false,
+				message        : 'Network is unreachable, please try your request later.',
+			};
 		case C.UPDATE_SEND_BUTTON:
 			return { ...state, isSending: action.payload.isSending };
 		case C.UPDATE_SERVER_RESPONSE:
@@ -22,8 +31,7 @@ export default (state = INITIAL_STATE, action) => {
 					messageDisplay : true,
 					variant        : 'danger',
 					isSending      : false,
-					message        :
-						'Network is unreachable, please try your request later.',
+					message        : 'Network is unreachable, please try your request later.',
 				};
 			} else if (action.payload.status === 201) {
 				return {
@@ -59,8 +67,7 @@ export default (state = INITIAL_STATE, action) => {
 					res            : '',
 					messageDisplay : true,
 					variant        : 'danger',
-					message        :
-						'Network is unreachable, please try your request later.',
+					message        : 'Network is unreachable, please try your request later.',
 				};
 			}
 			return {
@@ -80,8 +87,7 @@ export default (state = INITIAL_STATE, action) => {
 					res            : '',
 					messageDisplay : true,
 					variant        : 'danger',
-					message        :
-						'Network is unreachable, please try your request later.',
+					message        : 'Network is unreachable, please try your request later.',
 				};
 			}
 			return {
@@ -98,8 +104,7 @@ export default (state = INITIAL_STATE, action) => {
 					res            : '',
 					messageDisplay : true,
 					variant        : 'danger',
-					message        :
-						'Network is unreachable, please try your request later.',
+					message        : 'Network is unreachable, please try your request later.',
 				};
 			}
 			return {
@@ -115,8 +120,7 @@ export default (state = INITIAL_STATE, action) => {
 					res            : '',
 					messageDisplay : true,
 					variant        : 'danger',
-					message        :
-						'Network is unreachable, please try your request later.',
+					message        : 'Network is unreachable, please try your request later.',
 				};
 			}
 			return {

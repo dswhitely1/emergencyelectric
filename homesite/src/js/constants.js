@@ -58,24 +58,17 @@ const employmentRow1 = [ companyName, cityAndState, telephoneNumber ];
 const employmentRow2 = [ supervisorName, dateStarted, dateEnded ];
 const employmentRow3 = [ reasonForLeaving, mayWeContact ];
 
-const personalDataRows = [
-	personalDataRow1,
-	personalDataRow2,
-	personalDataRow3,
-	personalDataRow4,
-	personalDataRow5,
-	personalDataRow6,
-	personalDataRow7,
-	personalDataRow8,
-];
+const personalDataRows1 = [ personalDataRow1, personalDataRow2, personalDataRow3, personalDataRow4 ];
+const personalDataRows2 = [ personalDataRow5, personalDataRow6, personalDataRow7, personalDataRow8 ];
 
 const employmentRows = [ employmentRow1, employmentRow2, employmentRow3 ];
 const educationRows = [ schoolName, subjectStudied, didYouGraduate, degreeCertificationOrDiploma ];
 const referenceRows = [ name, relationship, yearsKnown, refPhoneNumber ];
 
 export default {
-	pdr : personalDataRows,
-	emp : employmentRows,
-	edu : educationRows,
-	ref : referenceRows,
+	pdr  : personalDataRows1,
+	pdr2 : personalDataRows2,
+	emp  : employmentRows,
+	edu  : educationRows,
+	ref  : referenceRows,
 };

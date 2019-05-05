@@ -5,7 +5,7 @@ import Header from './index/Header';
 
 import Footer from './index/Footer';
 import { showMessageDisplay } from '../actions';
-import { Col } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 import Index from './index/Index';
 import TableCreation from './admin/TableCreation';
@@ -15,6 +15,7 @@ class HomePage extends Component {
 		return (
 			<div id='page-top'>
 				<Navigation />
+
 				<Header />
 				<Index />
 				<Footer />

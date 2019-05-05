@@ -4,6 +4,7 @@ import Table from 'react-bootstrap/Table';
 class TableCreation extends Component {
 	renderList() {
 		const { tHeader, tData } = this.props;
+
 		return (
 			<Table bordered responsive size='sm'>
 				<thead className='thead-dark'>

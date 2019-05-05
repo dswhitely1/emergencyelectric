@@ -454,7 +454,7 @@ export const fetchApplication = (appId, db) => async dispatch => {
 	if (resp === undefined) {
 		dispatch({ type: C.FETCH_FAIL, payload: resp });
 	}
-	console.log(resp);
+
 	switch (db) {
 		case 'personalData':
 			dispatch({ type: C.FETCH_PERSONALDATA_DATA, payload: { personalData: resp } });

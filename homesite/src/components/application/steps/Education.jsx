@@ -16,8 +16,6 @@ class Education extends Component {
 		const { schoolName, subject, graduate, degree } = this.props.educateMe;
 		const { appId } = this.props.msgDisplay;
 		const form = this.refs.formEducation;
-		const dataSent = [ schoolName, subject, graduate, degree ];
-		console.log(form);
 		const sendResponse = {
 			parentid   : appId,
 			schoolName : schoolName,

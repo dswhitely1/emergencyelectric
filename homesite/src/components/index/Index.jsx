@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col } from 'react-bootstrap';
 import About from './About';
 import Services from './Services';
 import Testimonials from './Testimonials';

@@ -5,7 +5,7 @@ import rowHeaders from '../../js/constants';
 import TableCreation from '../admin/TableCreation';
 
 class DisplayApplication extends Component {
-	componentDidMount() {
+	componentWillMount() {
 		this.props.fetchApplication(24, 'personalData');
 		this.props.fetchApplication(24, 'personalData2');
 		this.props.fetchApplication(24, 'employment');
@@ -35,23 +35,22 @@ class DisplayApplication extends Component {
 		const pdrData3 = [ city, state, zipCode ];
 		const pdrData4 = [ phone, altPhone, email ];
 		const pdrDataRow = [ pdrData1, pdrData2, pdrData3, pdrData4 ];
+
 		return pdrDataRow;
 	}
-	renderTables(tableHeader, tableRows) {
-		console.log(tableRows);
+	renderTables(tableHeader, tableRows, keyValue) {
+		// while (tableRows === null) {
+		// 	this.appPersonalDataRow(this.props.appDisplay.personalData);
+		// }
 		const rowSection = tableRows.map((tRows, i) => {
-			console.table(tRows);
-			const tableSection = tableHeader.map((tHeaders, i) => {
-				return <TableCreation tHeader={tHeaders} tData={tRows} />;
-			});
-			return tableSection;
+			return <TableCreation tHeader={tableHeader[i]} tData={tRows} key={`${keyValue}-${i}`} />;
 		});
-		console.table(rowSection);
+
 		return rowSection;
 	}
 	renderList() {
 		const { personalData, personalData2, employment, education, references } = this.props.appDisplay;
-		console.log(personalData);
+
 		if (personalData === undefined) {
 			return <div>Loading Application</div>;
 		} else {
@@ -75,13 +74,9 @@ class DisplayApplication extends Component {
 						</p>
 					</section>
 					<section className='application'>
-						{this.renderTables(rowHeaders.pdr, this.appPersonalDataRow(personalData))}
+						<h2 className='text-center'>Personal Data</h2>
+						{this.renderTables(rowHeaders.pdr, this.appPersonalDataRow(personalData[0]), 'persData1')}
 					</section>
-					{/* <section className='application'>
-					{rowHeaders.pdr.map((persData1, i) => {
-						return <TableCreation tHeader={persData1} tData={'test'} key={`pd1-${i}`} />;
-					})}
-				</section> */}
 				</div>
 			);
 		}

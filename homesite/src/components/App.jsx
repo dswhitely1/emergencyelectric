@@ -3,8 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import HomePage from './HomePage';
 import ApplicationPage from './ApplicationPage';
 import Button from 'react-bootstrap/Button';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import { Tooltip } from 'react-bootstrap';
+
 import DisplayApplication from './application/DisplayApplication';
 const baseUrl = process.env.PUBLIC_URL;
 

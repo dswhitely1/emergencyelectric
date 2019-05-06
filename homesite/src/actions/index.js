@@ -476,3 +476,14 @@ export const fetchApplication = (appId, db) => async dispatch => {
 			return null;
 	}
 };
+export const fetchMessages = () => async dispatch => {
+	const response = await API.get('/messages');
+	dispatch({ type: C.FETCH_MESSAGES, payload: response.data });
+};
+
+export const deleteMessage = id => async dispatch => {
+	console.log(id);
+	const response = await API.delete(`/messages/del-message/${id}`);
+	console.log(response);
+	dispatch({ type: C.DELETE_MESSAGE, payload: id, count: response.data });
+};

@@ -68,11 +68,11 @@ class DisplayApplication extends Component {
 			return <div>Loading Application</div>;
 		} else {
 			return (
-				<div id='application-root'>
+				<div id='application-root' className='bg-light p-1'>
 					<header className='application'>
 						<h1 className='text-center'>Emergency Electric Inc</h1>
 					</header>
-					<section className='col-lg-10 mx-auto border-bottom'>
+					<section className='mx-auto border-bottom'>
 						<p className='lead text-justify'>
 							<strong className='font-weight-bold text-uppercase'>Emergency Electric, Inc</strong> is an equal
 							opportunity employer and does not discriminate against any applicant or employee based on race, color,
@@ -86,7 +86,7 @@ class DisplayApplication extends Component {
 							reasonable accommodation to qualified individuals with disabilities in accordance with applicable laws.
 						</p>
 					</section>
-					<section className='application border-bottom'>
+					<section className='application border-bottom  mx-auto'>
 						<h2 className='text-center'>Personal Data</h2>
 						{this.renderTables(rowHeaders.pdr, appPersonalDataRow(personalData[0]), 'persData1', 'persData1')}
 						{this.renderTables(rowHeaders.pdr2, appPersonalDataRow2(personalData2[0]), 'persData2', 'persData2')}
@@ -100,25 +100,25 @@ class DisplayApplication extends Component {
 							and employment authorization.{' '}
 						</p>
 					</section>
-					<section className='application border-bottom'>
+					<section className='application border-bottom mx-auto'>
 						<h2 className='text-center'>Employment History</h2>
 						{employment.map((empRows, i) =>
 							this.renderTables(rowHeaders.emp, appEmploymentDataRows(empRows), `empRows-${i}`, 'empRows'),
 						)}
 					</section>
-					<section className='application border-bottom'>
+					<section className='application border-bottom  mx-auto'>
 						<h2 className='text-center'>Education / Skills</h2>
 						{education.map((eduRows, i) =>
 							this.renderTables(rowHeaders.edu, appEducationDataRows(eduRows), `eduRows-${i}`, 'eduRows'),
 						)}
 					</section>
-					<section className='application border-bottom'>
+					<section className='application border-bottom  mx-auto'>
 						<h2 className='text-center'>References</h2>
 						{references.map((refRows, i) =>
 							this.renderTables(rowHeaders.ref, appReferenceDataRows(refRows), `refRows-${i}`, 'refRows'),
 						)}
 					</section>
-					<section className='application'>
+					<section className='application  mx-auto'>
 						<h2 className='mb-2 text-center'>Please read carefully before submitting the Application</h2>
 						<div className='lead text-justify'>
 							<p className='p-1'>
@@ -170,7 +170,7 @@ class DisplayApplication extends Component {
 		}
 	}
 	render() {
-		return <div>{this.renderList()}</div>;
+		return <div className='col-10 m-auto'>{this.renderList()}</div>;
 	}
 }
 const mapStateToProps = state => {

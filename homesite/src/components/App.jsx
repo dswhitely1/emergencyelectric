@@ -5,23 +5,18 @@ import ApplicationPage from './ApplicationPage';
 import Button from 'react-bootstrap/Button';
 
 import DisplayApplication from './application/DisplayApplication';
+import AdminHomePage from './admin/AdminHomePage';
 const baseUrl = process.env.PUBLIC_URL;
 
 class App extends Component {
 	render() {
 		return (
-			<div>
+			<div className='bg-primary'>
 				<Switch>
 					<Route exact path={`${baseUrl}/`} component={HomePage} />
 					<Route exact path={`${baseUrl}/apply`} component={ApplicationPage} />
+					<Route exact page={`${baseUrl}/admin`} component={AdminHomePage} />
 				</Switch>
-				<DisplayApplication />
-				<Button className='ee-24-hour-number' size='sm' variant='outline-secondary' href='tel:15027274823'>
-					<span>{`(502) 727-4823`}</span>
-				</Button>
-				<Button className='apply-button' variant='outline-success' href={`${baseUrl}/apply`}>
-					<span>Now Hiring</span>
-				</Button>
 			</div>
 		);
 	}

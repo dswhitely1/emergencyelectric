@@ -33,4 +33,17 @@ router.post('/new-message', (req, res) => {
 			res.status(500).json(err);
 		});
 });
+
+router.delete('/del-message/:id', (req, res) => {
+	const { id } = req.params;
+	db('messages')
+		.where({ id })
+		.del()
+		.then(count => {
+			res.status(200).json(count);
+		})
+		.catch(err => {
+			res.status(500).json(err);
+		});
+});
 module.exports = router;

@@ -6,10 +6,18 @@ import Testimonials from './Testimonials';
 import Contact from './Contact';
 import Goals from './Goals';
 import MessageDisplay from './MessageDisplay';
+import Button from 'react-bootstrap/Button';
+const baseUrl = process.env.PUBLIC_URL;
 class Index extends Component {
 	render() {
 		return (
 			<section>
+				<Button className='apply-button' variant='outline-success' href={`${baseUrl}/apply`}>
+					<span>Now Hiring</span>
+				</Button>
+				<Button className='ee-24-hour-number' size='sm' variant='outline-secondary' href='tel:15027274823'>
+					<span>{`(502) 727-4823`}</span>
+				</Button>
 				<About />
 				<Services />
 				<Testimonials />

@@ -131,7 +131,7 @@ class Contact extends Component {
 								onChange={this.handleMessageChange}
 							/>
 						</Form.Group>
-						<Button type='submit' variant='warning' className='mr-2' size='lg' disabled>
+						<Button type='submit' variant='warning' className='mr-2' size='lg'>
 							{
 								this.props.messageAlert.isSending ? `Sending` :
 								`Send Message`}

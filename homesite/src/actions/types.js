@@ -77,4 +77,6 @@ export default {
 	FETCH_EDUCATION_DATA                    : 'FETCH_EDUCATION_DATA',
 	FETCH_REFERENCES_DATA                   : 'FETCH_REFERENCES_DATA',
 	FETCH_FAIL                              : 'FETCH_FAIL',
+	FETCH_MESSAGES                          : 'FETCH_MESSAGES',
+	DELETE_MESSAGE                          : 'DELETE_MESSAGE',
 };

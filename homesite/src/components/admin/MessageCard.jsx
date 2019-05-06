@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 
 const MessageCard = props => {
 	const { subject, firstName, lastName, message, email, createdAt } = props.messages;
-	const { deleteButton, value } = props;
+	const { deleteButton, value, location } = props;
 	return (
 		<Card className='mb-2'>
 			<Card.Header>{subject}</Card.Header>
@@ -11,15 +11,15 @@ const MessageCard = props => {
 				<Card.Title>{`${firstName} ${lastName}`}</Card.Title>
 				<Card.Text>{message}</Card.Text>
 				<Card.Text>
-					{`Respond to`}
-					<Button href={`mailto:${email}`} size='sm' variant='info'>
+					{`Respond to `}
+					<Button href={`mailto:${email}`} size='sm' variant='outline-info'>
 						{email}
 					</Button>
 				</Card.Text>
 			</Card.Body>
 			<Card.Footer className='text-muted'>
 				{createdAt}
-				<Button variant='danger' className='float-right' size='sm' onClick={() => deleteButton(value)}>
+				<Button variant='danger' className='float-right' size='sm' onClick={() => deleteButton(value, location)}>
 					Delete
 				</Button>
 			</Card.Footer>

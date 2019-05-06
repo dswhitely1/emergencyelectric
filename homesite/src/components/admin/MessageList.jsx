@@ -9,7 +9,9 @@ class MessageList extends Component {
 	renderMessages(theMessages) {
 		if (theMessages !== undefined) {
 			const renderMessageCards = this.props.msgList.messages.map((msgs, i) => {
-				return <MessageCard deleteButton={this.props.deleteMsgButton} messages={msgs} key={i} value={msgs.id} />;
+				return (
+					<MessageCard deleteButton={this.props.deleteMsgButton} messages={msgs} key={i} value={msgs.id} location={i} />
+				);
 			});
 			return renderMessageCards;
 		} else {

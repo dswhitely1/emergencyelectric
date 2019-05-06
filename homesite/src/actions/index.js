@@ -481,9 +481,9 @@ export const fetchMessages = () => async dispatch => {
 	dispatch({ type: C.FETCH_MESSAGES, payload: response.data });
 };
 
-export const deleteMessage = id => async dispatch => {
+export const deleteMessage = (id, location) => async dispatch => {
 	console.log(id);
 	const response = await API.delete(`/messages/del-message/${id}`);
 	console.log(response);
-	dispatch({ type: C.DELETE_MESSAGE, payload: id, count: response.data });
+	dispatch({ type: C.DELETE_MESSAGE, payload: { id, location, count: response.data } });
 };

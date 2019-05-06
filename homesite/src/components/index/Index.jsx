@@ -12,7 +12,7 @@ class Index extends Component {
 	render() {
 		return (
 			<section>
-				<Button className='apply-button' variant='outline-success' href={`${baseUrl}/apply`}>
+				<Button className='apply-button' variant='outline-success' size='sm' href={`${baseUrl}/apply`}>
 					<span>Now Hiring</span>
 				</Button>
 				<Button className='ee-24-hour-number' size='sm' variant='outline-secondary' href='tel:15027274823'>

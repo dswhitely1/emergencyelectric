@@ -482,8 +482,13 @@ export const fetchMessages = () => async dispatch => {
 };
 
 export const deleteMessage = (id, location) => async dispatch => {
-	console.log(id);
 	const response = await API.delete(`/messages/del-message/${id}`);
-	console.log(response);
 	dispatch({ type: C.DELETE_MESSAGE, payload: { id, location, count: response.data } });
+};
+
+export const fetchApplications = () => async dispatch => {
+	console.log('I was called');
+	const response = await API.get('/admin');
+	console.log(response);
+	dispatch({ type: C.FETCH_APPLICATIONS, payload: response.data });
 };

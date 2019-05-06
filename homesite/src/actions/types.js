@@ -79,4 +79,5 @@ export default {
 	FETCH_FAIL                              : 'FETCH_FAIL',
 	FETCH_MESSAGES                          : 'FETCH_MESSAGES',
 	DELETE_MESSAGE                          : 'DELETE_MESSAGE',
+	FETCH_APPLICATIONS                      : 'FETCH_APPLICATIONS',
 };

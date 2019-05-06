@@ -7,6 +7,7 @@ class MessageList extends Component {
 		this.props.deleteMsgButton(e.target.value);
 	};
 	renderMessages(theMessages) {
+		console.log(theMessages);
 		if (theMessages !== undefined) {
 			const renderMessageCards = this.props.msgList.messages.map((msgs, i) => {
 				return (
@@ -20,10 +21,14 @@ class MessageList extends Component {
 	}
 	render() {
 		console.log(this.props);
-		const { messages } = this.props.msgList;
+		const { messages, messageCount } = this.props.msgList;
 		return (
 			<div className='col-md-10 m-auto bg-light application'>
-				<h2 className='text-center'>Messages</h2>
+				<h2 className='text-center'>
+					{
+						messageCount === 0 ? `No Messages` :
+						`Messages`}
+				</h2>
 				{this.renderMessages(messages)}
 			</div>
 		);

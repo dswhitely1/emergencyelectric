@@ -4,6 +4,7 @@ import { Card, Button } from 'react-bootstrap';
 const MessageCard = props => {
 	const { subject, firstName, lastName, message, email, createdAt } = props.messages;
 	const { deleteButton, value, location } = props;
+	console.log(props.messages);
 	return (
 		<Card className='mb-2'>
 			<Card.Header>{subject}</Card.Header>

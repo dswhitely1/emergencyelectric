@@ -9,6 +9,7 @@ import educationReducer from './educationReducer';
 import referenceReducer from './referenceReducer';
 import applicationDisplayReducer from './applicationDisplayReducer';
 import messageListReducer from './messageListReducer';
+import applicationListReducer from './applicationListReducer';
 
 export default combineReducers({
 	formContact        : formReducer,
@@ -20,4 +21,5 @@ export default combineReducers({
 	references         : referenceReducer,
 	applicationDisplay : applicationDisplayReducer,
 	messageList        : messageListReducer,
+	applicationList    : applicationListReducer,
 });

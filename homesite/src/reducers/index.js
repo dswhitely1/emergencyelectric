@@ -10,6 +10,7 @@ import referenceReducer from './referenceReducer';
 import applicationDisplayReducer from './applicationDisplayReducer';
 import messageListReducer from './messageListReducer';
 import applicationListReducer from './applicationListReducer';
+import adminPageReducer from './adminPageReducer';
 
 export default combineReducers({
 	formContact        : formReducer,
@@ -22,4 +23,5 @@ export default combineReducers({
 	applicationDisplay : applicationDisplayReducer,
 	messageList        : messageListReducer,
 	applicationList    : applicationListReducer,
+	adminPage          : adminPageReducer,
 });

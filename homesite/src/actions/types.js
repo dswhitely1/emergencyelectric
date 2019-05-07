@@ -80,4 +80,6 @@ export default {
 	FETCH_MESSAGES                          : 'FETCH_MESSAGES',
 	DELETE_MESSAGE                          : 'DELETE_MESSAGE',
 	FETCH_APPLICATIONS                      : 'FETCH_APPLICATIONS',
+	ADMIN_PAGE_CHANGE                       : 'ADMIN_PAGE_CHANGE',
+	VIEW_APPLICATION                        : 'VIEW_APPLICATION',
 };

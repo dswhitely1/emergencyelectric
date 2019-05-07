@@ -59,12 +59,12 @@ export const valueContactFormChange = (item, value) => {
 
 export const sendMessage = values => async dispatch => {
 	const response = await API.post('/messages/new-message', values).catch(error => {
-		const resp = { status: 'NE' };
+		const resp = {};
 		dispatch({ type: C.UPDATE_SERVER_RESPONSE, payload: resp });
 	});
 	const resp =
 
-			response === undefined ? { status: 'NE' } :
+			response === undefined ? {} :
 			response;
 
 	dispatch({ type: C.UPDATE_SERVER_RESPONSE, payload: resp });
@@ -245,12 +245,12 @@ export const personalDataFormValidation = value => {
 
 export const sendPersonalDataDB1 = values => async dispatch => {
 	const response = await API.post('/application/persdata1', values).catch(err => {
-		const resp = { appId: 'NE' };
+		const resp = {};
 		dispatch({ type: C.UPDATE_PERSONAL_DATA_DB_1, payload: resp });
 	});
 	const resp =
 
-			response === undefined ? { appId: 'NE' } :
+			response === undefined ? {} :
 			response.data;
 	dispatch({
 		type    : C.UPDATE_PERSONAL_DATA_DB_1,
@@ -260,36 +260,36 @@ export const sendPersonalDataDB1 = values => async dispatch => {
 
 export const sendEmploymentData = values => async dispatch => {
 	const response = await API.post('/application/employment', values).catch(err => {
-		const resp = { status: 'NE' };
+		const resp = {};
 		dispatch({ type: C.UPDATE_EMPLOYMENT_DATA_DB, payload: resp });
 	});
 	const resp =
 
-			response === undefined ? { status: 'NE' } :
+			response === undefined ? {} :
 			response.data;
 	dispatch({ type: C.UPDATE_EMPLOYMENT_DATA_DB, payload: resp });
 };
 
 export const sendEducationData = values => async dispatch => {
 	const response = await API.post('/application/education', values).catch(err => {
-		const resp = { status: 'NE' };
+		const resp = {};
 		dispatch({ type: C.UPDATE_EDUCATION_DATA_DB, payload: resp });
 	});
 	const resp =
 
-			response === undefined ? { status: 'NE' } :
+			response === undefined ? {} :
 			response.data;
 	dispatch({ type: C.UPDATE_EDUCATION_DATA_DB, payload: resp });
 };
 
 export const sendReferenceData = values => async dispatch => {
 	const response = await API.post('/application/reference', values).catch(err => {
-		const resp = { status: 'NE' };
+		const resp = {};
 		dispatch({ type: C.UPDATE_REFERENCE_DATA_DB, payload: resp });
 	});
 	const resp =
 
-			response === undefined ? { status: 'NE' } :
+			response === undefined ? {} :
 			response.data;
 	dispatch({ type: C.UPDATE_REFERENCE_DATA_DB, payload: resp });
 };
@@ -444,17 +444,13 @@ export const resetAppId = () => {
 
 export const fetchApplication = (appId, db) => async dispatch => {
 	const response = await API.get(`/admin/application/${db}/${appId}`).catch(err => {
-		const resp = { status: 'NE' };
+		const resp = {};
 		dispatch({ type: C.FETCH_FAIL, payload: resp });
 	});
 	const resp =
 
-			response === undefined ? { status: 'NE' } :
+			response === undefined ? {} :
 			response.data;
-	if (resp === undefined) {
-		dispatch({ type: C.FETCH_FAIL, payload: resp });
-	}
-
 	switch (db) {
 		case 'personalData':
 			dispatch({ type: C.FETCH_PERSONALDATA_DATA, payload: { personalData: resp } });
@@ -477,8 +473,15 @@ export const fetchApplication = (appId, db) => async dispatch => {
 	}
 };
 export const fetchMessages = () => async dispatch => {
-	const response = await API.get('/messages');
-	dispatch({ type: C.FETCH_MESSAGES, payload: response.data });
+	const response = await API.get('/messages').catch(err => {
+		const resp = {};
+		dispatch({ type: C.FETCH_MESSAGES, payload: { resp } });
+	});
+	const resp =
+
+			response === undefined ? {} :
+			response.data;
+	dispatch({ type: C.FETCH_MESSAGES, payload: resp });
 };
 
 export const deleteMessage = (id, location) => async dispatch => {
@@ -487,8 +490,27 @@ export const deleteMessage = (id, location) => async dispatch => {
 };
 
 export const fetchApplications = () => async dispatch => {
-	console.log('I was called');
-	const response = await API.get('/admin');
-	console.log(response);
-	dispatch({ type: C.FETCH_APPLICATIONS, payload: response.data });
+	const response = await API.get('/admin').catch(err => {
+		const resp = {};
+		dispatch({ type: C.FETCH_APPLICATIONS, payload: resp });
+	});
+	const resp =
+
+			response === undefined ? {} :
+			response.data;
+	dispatch({ type: C.FETCH_APPLICATIONS, payload: resp });
+};
+
+export const adminChangeRoute = page => {
+	return {
+		type    : C.ADMIN_PAGE_CHANGE,
+		payload : { page },
+	};
+};
+
+export const viewApplication = id => {
+	return {
+		type    : C.VIEW_APPLICATION,
+		payload : { page: 2, appId: id },
+	};
 };

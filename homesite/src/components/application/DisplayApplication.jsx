@@ -10,13 +10,15 @@ import {
 	appEducationDataRows,
 	appReferenceDataRows,
 } from '../../js/transformData';
+import { Col } from 'react-bootstrap';
 class DisplayApplication extends Component {
 	componentWillMount() {
-		this.props.fetchApplication(43, 'personalData');
-		this.props.fetchApplication(43, 'personalData2');
-		this.props.fetchApplication(43, 'employment');
-		this.props.fetchApplication(43, 'education');
-		this.props.fetchApplication(43, 'references');
+		const { appId } = this.props.admPage;
+		this.props.fetchApplication(appId, 'personalData');
+		this.props.fetchApplication(appId, 'personalData2');
+		this.props.fetchApplication(appId, 'employment');
+		this.props.fetchApplication(appId, 'education');
+		this.props.fetchApplication(appId, 'references');
 	}
 
 	renderTables(tableHeader, tableRows, keyValue, sect) {
@@ -165,6 +167,9 @@ class DisplayApplication extends Component {
 							</p>
 						</div>
 					</section>
+					<section>
+						<Col xs={12} />
+					</section>
 				</div>
 			);
 		}
@@ -174,6 +179,6 @@ class DisplayApplication extends Component {
 	}
 }
 const mapStateToProps = state => {
-	return { appDisplay: state.applicationDisplay, msgDisplay: state.messageDisplay };
+	return { appDisplay: state.applicationDisplay, msgDisplay: state.messageDisplay, admPage: state.adminPage };
 };
 export default connect(mapStateToProps, { fetchApplication })(DisplayApplication);

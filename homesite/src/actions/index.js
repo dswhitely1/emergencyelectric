@@ -62,11 +62,8 @@ export const sendMessage = values => async dispatch => {
 		const resp = {};
 		dispatch({ type: C.UPDATE_SERVER_RESPONSE, payload: resp });
 	});
-	const resp =
-
-			response === undefined ? {} :
-			response;
-
+	const resp = response === undefined ? {} : response;
+	console.log(resp);
 	dispatch({ type: C.UPDATE_SERVER_RESPONSE, payload: resp });
 };
 
@@ -248,10 +245,8 @@ export const sendPersonalDataDB1 = values => async dispatch => {
 		const resp = {};
 		dispatch({ type: C.UPDATE_PERSONAL_DATA_DB_1, payload: resp });
 	});
-	const resp =
-
-			response === undefined ? {} :
-			response.data;
+	const resp = response === undefined ? {} : response.data;
+	console.log(resp);
 	dispatch({
 		type    : C.UPDATE_PERSONAL_DATA_DB_1,
 		payload : { appId: resp },
@@ -263,10 +258,7 @@ export const sendEmploymentData = values => async dispatch => {
 		const resp = {};
 		dispatch({ type: C.UPDATE_EMPLOYMENT_DATA_DB, payload: resp });
 	});
-	const resp =
-
-			response === undefined ? {} :
-			response.data;
+	const resp = response === undefined ? {} : response.data;
 	dispatch({ type: C.UPDATE_EMPLOYMENT_DATA_DB, payload: resp });
 };
 
@@ -275,10 +267,7 @@ export const sendEducationData = values => async dispatch => {
 		const resp = {};
 		dispatch({ type: C.UPDATE_EDUCATION_DATA_DB, payload: resp });
 	});
-	const resp =
-
-			response === undefined ? {} :
-			response.data;
+	const resp = response === undefined ? {} : response.data;
 	dispatch({ type: C.UPDATE_EDUCATION_DATA_DB, payload: resp });
 };
 
@@ -287,10 +276,7 @@ export const sendReferenceData = values => async dispatch => {
 		const resp = {};
 		dispatch({ type: C.UPDATE_REFERENCE_DATA_DB, payload: resp });
 	});
-	const resp =
-
-			response === undefined ? {} :
-			response.data;
+	const resp = response === undefined ? {} : response.data;
 	dispatch({ type: C.UPDATE_REFERENCE_DATA_DB, payload: resp });
 };
 export const employmentInfoChange = (item, value) => {
@@ -447,10 +433,7 @@ export const fetchApplication = (appId, db) => async dispatch => {
 		const resp = {};
 		dispatch({ type: C.FETCH_FAIL, payload: resp });
 	});
-	const resp =
-
-			response === undefined ? {} :
-			response.data;
+	const resp = response === undefined ? {} : response.data;
 	switch (db) {
 		case 'personalData':
 			dispatch({ type: C.FETCH_PERSONALDATA_DATA, payload: { personalData: resp } });
@@ -477,10 +460,7 @@ export const fetchMessages = () => async dispatch => {
 		const resp = {};
 		dispatch({ type: C.FETCH_MESSAGES, payload: { resp } });
 	});
-	const resp =
-
-			response === undefined ? {} :
-			response.data;
+	const resp = response === undefined ? {} : response.data;
 	dispatch({ type: C.FETCH_MESSAGES, payload: resp });
 };
 
@@ -494,10 +474,7 @@ export const fetchApplications = () => async dispatch => {
 		const resp = {};
 		dispatch({ type: C.FETCH_APPLICATIONS, payload: resp });
 	});
-	const resp =
-
-			response === undefined ? {} :
-			response.data;
+	const resp = response === undefined ? {} : response.data;
 	dispatch({ type: C.FETCH_APPLICATIONS, payload: resp });
 };
 
@@ -511,6 +488,14 @@ export const adminChangeRoute = page => {
 export const viewApplication = id => {
 	return {
 		type    : C.VIEW_APPLICATION,
-		payload : { page: 2, appId: id },
+		payload : { page: '2', appId: id },
 	};
+};
+
+export const sendTestResponse = values => async dispatch => {
+	const response = await API.post('/application/test', values);
+
+	const resp = response === undefined ? { message: 'Network Not Available' } : response.data;
+	console.log(resp);
+	dispatch({ type: C.TEST_APPLICATION, payload: { message: resp } });
 };

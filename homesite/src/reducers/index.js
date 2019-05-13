@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-
-import formReducer from './formReducer';
+import { reducer as formReducer } from 'redux-form';
+import contactFormReducer from './contactFormReducer';
 import messageReducer from './messageReducer';
 import applicationPageReducer from './applicationPageReducer';
 import personalDataReducer from './personalDataReducer';
@@ -13,7 +13,8 @@ import applicationListReducer from './applicationListReducer';
 import adminPageReducer from './adminPageReducer';
 
 export default combineReducers({
-	formContact        : formReducer,
+	form               : formReducer,
+	formContact        : contactFormReducer,
 	messageDisplay     : messageReducer,
 	applicationPage    : applicationPageReducer,
 	personalData       : personalDataReducer,

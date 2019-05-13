@@ -13,12 +13,12 @@ import {
 
 class Education extends Component {
 	handleSubmit = e => {
-		const { schoolName, subject, graduate, degree } = this.props.educateMe;
+		const { schoolname, subject, graduate, degree } = this.props.educateMe;
 		const { appId } = this.props.msgDisplay;
 		const form = this.refs.formEducation;
 		const sendResponse = {
 			parentid   : appId,
-			schoolName : schoolName,
+			schoolname : schoolname,
 			subject    : subject,
 			graduate   : graduate,
 			degree     : degree,

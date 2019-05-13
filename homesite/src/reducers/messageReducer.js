@@ -129,6 +129,13 @@ export default (state = INITIAL_STATE, action) => {
 				variant        : 'info',
 				message        : `You're references information has been updated.`,
 			};
+		case C.TEST_APPLICATION:
+			return {
+				...state,
+				messageDisplay : true,
+				variant        : 'success',
+				message        : action.payload.message,
+			};
 		default:
 			return state;
 	}

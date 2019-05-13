@@ -5,14 +5,12 @@ import { Row } from 'react-bootstrap';
 import { viewApplication } from '../../actions';
 class ApplicationList extends Component {
 	onViewApplicationClick = e => {
-		console.log(e.target.value);
 		this.props.viewApplication(e.target.value);
 	};
 	renderApplicationList() {
-		console.log(this.props.apps);
 		if (this.props.apps.appList !== undefined) {
-			const renderApplicationCards = this.props.apps.appList.map((maps, i) => {
-				return <ApplicationCard apps={maps} key={i} viewApplication={this.onViewApplicationClick} />;
+			const renderApplicationCards = this.props.apps.appList.map((applyList, i) => {
+				return <ApplicationCard apps={applyList} key={i} viewApplication={this.onViewApplicationClick} />;
 			});
 			return renderApplicationCards;
 		} else {

@@ -1,31 +1,49 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Introduction from './steps/Introduction';
-import PersonalData1 from './steps/PersonalData1';
+import PersonalData from '../application/steps-reduxform/PersonalData';
 import Introduction2 from './steps/Introduction2';
 import MessageDisplay from '../index/MessageDisplay';
-import Employment from './steps/Employment';
+import Employment from './steps-reduxform/Employment';
 import Education from './steps/Education';
 import References from './steps/References';
 import FinalPage from './steps/FinalPage';
 import ThankYou from './steps/ThankYou';
+import { sendPersonalDataDB1, nextApplicationPage } from '../../actions';
 class Application extends Component {
+	onPersonalDataSubmit = values => {
+		this.props.sendPersonalDataDB1(values);
+		if (this.props.msgDisplay.variant !== 'Danger') {
+			this.props.nextApplicationPage(3);
+		}
+	};
+	onEmploymentDataSubmit = values => {
+		const employmentData = { parentid: this.props.msgDisplay.appId, ...values };
+		console.log(employmentData);
+	};
+
 	render() {
 		const { page } = this.props.appPageIndex;
 		return (
 			<div>
-				{
-					this.props.msgDisplay.messageDisplay ? <MessageDisplay /> :
-					null}
-				{
-					page === 0 ? <Introduction /> :
-					page === 1 ? <Introduction2 /> :
-					page === 2 ? <PersonalData1 /> :
-					page === 3 ? <Employment /> :
-					page === 4 ? <Education /> :
-					page === 5 ? <References /> :
-					page === 6 ? <FinalPage /> :
-					<ThankYou />}
+				{this.props.msgDisplay.messageDisplay ? <MessageDisplay /> : null}
+				{page === 0 ? (
+					<Introduction />
+				) : page === 1 ? (
+					<Introduction2 />
+				) : page === 2 ? (
+					<PersonalData onSubmit={this.onPersonalDataSubmit} />
+				) : page === 3 ? (
+					<Employment onSubmit={this.onEmploymentDataSubmit} />
+				) : page === 4 ? (
+					<Education />
+				) : page === 5 ? (
+					<References />
+				) : page === 6 ? (
+					<FinalPage />
+				) : (
+					<ThankYou />
+				)}
 			</div>
 		);
 	}
@@ -37,4 +55,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps)(Application);
+export default connect(mapStateToProps, { sendPersonalDataDB1, nextApplicationPage })(Application);

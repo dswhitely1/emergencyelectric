@@ -3,16 +3,13 @@ import { connect } from 'react-redux';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import { Nav, Badge, Button } from 'react-bootstrap';
+import { Badge, Button } from 'react-bootstrap';
 import { adminChangeRoute } from '../../actions';
 class Navigation extends Component {
 	onButtonClick = e => {
-		console.log(e.target.value);
 		this.props.adminChangeRoute(e.target.value);
 	};
 	render() {
-		console.log(this.props);
-
 		return (
 			<Navbar bg='primary' variant='dark' expand='sm' className='text-uppercase' sticky='top'>
 				<Container className='justify-content-center mb-md-2 mb-lg-0'>

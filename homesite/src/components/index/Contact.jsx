@@ -33,13 +33,11 @@ class Contact extends Component {
 		}
 		this.props.formValidation(true);
 		const values = {
-			firstName   : this.props.messageForm.firstName,
-			lastName    : this.props.messageForm.lastName,
-			email       : this.props.messageForm.email,
-			subject     : this.props.messageForm.subject,
-			message     : this.props.messageForm.message,
-			createdAt   : new Date().toString(),
-			readMessage : false,
+			firstname : this.props.messageForm.firstName,
+			lastname  : this.props.messageForm.lastName,
+			email     : this.props.messageForm.email,
+			subject   : this.props.messageForm.subject,
+			message   : this.props.messageForm.message,
 		};
 
 		if (form.checkValidity()) {

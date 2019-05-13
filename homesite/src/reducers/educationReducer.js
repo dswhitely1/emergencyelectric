@@ -11,7 +11,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case C.UPDATE_SCHOOLNAME_CHANGE:
-			return { ...state, schoolName: action.payload.schoolName };
+			return { ...state, schoolName: action.payload.schoolname };
 		case C.UPDATE_SUBJECT_CHANGE:
 			return { ...state, subject: action.payload.subject };
 		case C.UPDATE_GRADUATE_CHANGE:
@@ -24,7 +24,7 @@ export default (state = INITIAL_STATE, action) => {
 			return {
 				...state,
 				formValidation : action.payload.formValidation,
-				schoolName     : action.payload.schoolName,
+				schoolname     : action.payload.schoolname,
 				subject        : action.payload.subject,
 				graduate       : action.payload.graduate,
 				degree         : action.payload.degree,

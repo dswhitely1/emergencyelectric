@@ -2,9 +2,8 @@ import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
 const MessageCard = props => {
-	const { subject, firstName, lastName, message, email, createdAt } = props.messages;
+	const { subject, firstName, lastName, message, email, createdat } = props.messages;
 	const { deleteButton, value, location } = props;
-	console.log(props.messages);
 	return (
 		<Card className='mb-2'>
 			<Card.Header>{subject}</Card.Header>
@@ -19,7 +18,7 @@ const MessageCard = props => {
 				</Card.Text>
 			</Card.Body>
 			<Card.Footer className='text-muted'>
-				{createdAt}
+				{Date(createdat)}
 				<Button variant='danger' className='float-right' size='sm' onClick={() => deleteButton(value, location)}>
 					Delete
 				</Button>

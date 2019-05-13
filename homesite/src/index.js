@@ -27,7 +27,7 @@ const persistConfig = {
 	key             : 'root',
 	storage         : storage,
 	stateReconciler : autoMergeLevel2,
-	whitelist       : [ 'messageDisplay' ],
+	whitelist       : [],
 };
 const rootReducer = persistReducer(persistConfig, reducers);
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(reduxThunk)));
@@ -36,11 +36,9 @@ const persistor = persistStore(store);
 // Render the Webpage
 ReactDOM.render(
 	<Provider store={store}>
-		<PersistGate loading={null} persistor={persistor}>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
-		</PersistGate>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
 	</Provider>,
 	document.getElementById('root'),
 );

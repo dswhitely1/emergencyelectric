@@ -22,42 +22,25 @@ class PersonalData1 extends Component {
 			shiftWeekdays,
 			shiftWeekends,
 		} = this.props.persData;
-		const {
-			authYes,
-			authNo,
-			overYes,
-			overNo,
-			permitYes,
-			permitNo,
-		} = this.props.persData;
+		const { authYes, authNo, overYes, overNo, permitYes, permitNo } = this.props.persData;
 
 		const form = this.refs.formPersonalData;
-
+		console.log(form);
 		if (!form.checkValidity()) {
 			e.preventDefault();
 			e.stopPropagation();
-			this.props.applicationMessage(
-				'Please fill out all the forms that are marked with a star.',
-			);
-			return;
 		}
 		if (!scheduleFullTime && !schedulePartTime && !scheduleTemporary) {
-			this.props.applicationMessage(
-				'Please select either FullTime, PartTime, or Temporary',
-			);
+			this.props.applicationMessage('Please select either FullTime, PartTime, or Temporary');
 			return;
 		}
 
 		if (!shiftEvenings && !shiftNights && !shiftWeekdays && !shiftWeekends) {
-			this.props.applicationMessage(
-				'Please select which schedule you would like?',
-			);
+			this.props.applicationMessage('Please select which schedule you would like?');
 			return;
 		}
 		if (!authYes && !authNo) {
-			this.props.applicationMessage(
-				'Are you authorized to work in the United States?',
-			);
+			this.props.applicationMessage('Are you authorized to work in the United States?');
 			return;
 		}
 		if (!overYes && !overNo) {
@@ -68,11 +51,12 @@ class PersonalData1 extends Component {
 			this.props.applicationMessage('Do you have a work permit?');
 			return;
 		}
-		e.preventDefault();
-		e.stopPropagation();
 		this.props.personalDataFormValidation(true);
+
+		const sendData = this.props.persData;
+		console.log(sendData);
 		if (form.checkValidity()) {
-			this.props.sendPersonalDataDB1(this.props.persData);
+			this.props.sendPersonalDataDB1(sendData);
 		}
 		if (this.props.msgDisplay.variant !== 'danger') {
 			const nextNum = this.props.appPageIndex.page + 1;
@@ -152,9 +136,7 @@ class PersonalData1 extends Component {
 									required
 									onChange={this.onInputChange}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Form.Group>
 							<Form.Group as={Col} md={2}>
 								<Form.Control
@@ -174,9 +156,7 @@ class PersonalData1 extends Component {
 									required
 									onChange={this.onInputChange}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Form.Group>
 							<Form.Group as={Col} md={2}>
 								<Form.Control
@@ -198,9 +178,7 @@ class PersonalData1 extends Component {
 									required
 									onChange={this.onInputChange}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Form.Group>
 							<Form.Group as={Col} md={6}>
 								<Form.Control
@@ -222,9 +200,7 @@ class PersonalData1 extends Component {
 									onChange={this.onInputChange}
 									required
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Form.Group>
 							<Form.Group as={Col} md={4}>
 								<Form.Control
@@ -235,9 +211,7 @@ class PersonalData1 extends Component {
 									onChange={this.onInputChange}
 									required
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Form.Group>
 							<Form.Group as={Col} md={4}>
 								<Form.Control
@@ -249,9 +223,7 @@ class PersonalData1 extends Component {
 									onChange={this.onInputChange}
 									required
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required, provide a 5 Digit Zipcode
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required, provide a 5 Digit Zipcode</Form.Control.Feedback>
 							</Form.Group>
 						</Form.Row>
 						<Form.Row>
@@ -265,9 +237,7 @@ class PersonalData1 extends Component {
 									onChange={this.onInputChange}
 									required
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Form.Group>
 							<Form.Group as={Col} md={4}>
 								<Form.Control
@@ -278,9 +248,7 @@ class PersonalData1 extends Component {
 									value={alternatePhoneNumber}
 									onChange={this.onInputChange}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Form.Group>
 							<Form.Group as={Col} md={4}>
 								<Form.Control
@@ -291,9 +259,7 @@ class PersonalData1 extends Component {
 									onChange={this.onInputChange}
 									required
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Invalid Email Address
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Invalid Email Address</Form.Control.Feedback>
 							</Form.Group>
 						</Form.Row>
 						<Form.Row className='mb-3'>
@@ -380,9 +346,7 @@ class PersonalData1 extends Component {
 									value={desiredPay}
 									onChange={this.onInputChange}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required, example 10.00
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required, example 10.00</Form.Control.Feedback>
 							</Form.Group>
 							<Form.Group as={Col} md={4}>
 								<Form.Control
@@ -393,9 +357,7 @@ class PersonalData1 extends Component {
 									value={positionDesired}
 									onChange={this.onInputChange}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Form.Group>
 						</Form.Row>
 						<Form.Row>
@@ -411,49 +373,19 @@ class PersonalData1 extends Component {
 									required
 									onChange={this.onInputChange}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Form.Group>
 						</Form.Row>
 						<Form.Row className='mb-3'>
 							<Col md={4}>
 								<p>Are you authorized to work in the United States?</p>
-								<Form.Check
-									custom
-									inline
-									label='Yes'
-									id='authYes'
-									checked={authYes}
-									onChange={this.onHandleCheckBox}
-								/>
-								<Form.Check
-									custom
-									inline
-									label='No'
-									id='authNo'
-									checked={authNo}
-									onChange={this.onHandleCheckBox}
-								/>
+								<Form.Check custom inline label='Yes' id='authYes' checked={authYes} onChange={this.onHandleCheckBox} />
+								<Form.Check custom inline label='No' id='authNo' checked={authNo} onChange={this.onHandleCheckBox} />
 							</Col>
 							<Col md={4}>
 								<p>Are you under 18 years of age?</p>
-								<Form.Check
-									custom
-									inline
-									label='Yes'
-									id='overYes'
-									checked={overYes}
-									onChange={this.onHandleCheckBox}
-								/>
-								<Form.Check
-									custom
-									inline
-									label='No'
-									id='overNo'
-									checked={overNo}
-									onChange={this.onHandleCheckBox}
-								/>
+								<Form.Check custom inline label='Yes' id='overYes' checked={overYes} onChange={this.onHandleCheckBox} />
+								<Form.Check custom inline label='No' id='overNo' checked={overNo} onChange={this.onHandleCheckBox} />
 							</Col>
 							<Col md={4}>
 								<p>If so, can you furnish a work permit?</p>
@@ -475,7 +407,6 @@ class PersonalData1 extends Component {
 								/>
 							</Col>
 						</Form.Row>
-
 						<Button
 							type='submit'
 							variant='outline-info'
@@ -484,10 +415,7 @@ class PersonalData1 extends Component {
 							ref={`continue`}>
 							Continue
 						</Button>
-						<Button
-							variant='outline-info'
-							className='float-left'
-							onClick={this.onPrevPageClick}>
+						<Button variant='outline-info' className='float-left' onClick={this.onPrevPageClick}>
 							Previous
 						</Button>
 					</Form>

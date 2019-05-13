@@ -1,4 +1,61 @@
 const names = [ 'personalData', 'personalData2', 'employment', 'education', 'references' ];
+let states = [
+	'AK',
+	'AL',
+	'AR',
+	'AS',
+	'AZ',
+	'CA',
+	'CO',
+	'CT',
+	'DC',
+	'DE',
+	'FL',
+	'GA',
+	'GU',
+	'HI',
+	'IA',
+	'ID',
+	'IL',
+	'IN',
+	'KS',
+	'KY',
+	'LA',
+	'MA',
+	'MD',
+	'ME',
+	'MI',
+	'MN',
+	'MO',
+	'MS',
+	'MT',
+	'NC',
+	'ND',
+	'NE',
+	'NH',
+	'NJ',
+	'NM',
+	'NV',
+	'NY',
+	'OH',
+	'OK',
+	'OR',
+	'PA',
+	'PR',
+	'RI',
+	'SC',
+	'SD',
+	'TN',
+	'TX',
+	'UT',
+	'VA',
+	'VI',
+	'VT',
+	'WA',
+	'WI',
+	'WV',
+	'WY',
+];
 const toCamelCase = str => {
 	return str
 		.toLowerCase()
@@ -42,8 +99,15 @@ const giveMeConstants = () => {
 	}
 };
 
+const giveMeStateOptions = () => {
+	for (let i = 0; i < states.length; i++) {
+		console.log(`<option value="${states[i]}">${states[i]}</option>`);
+	}
+};
+
 console.log(giveMeTypes());
 console.log(giveMeActions());
 console.log(giveMeReducers());
 console.log(giveMeActionPayload());
 console.log(giveMeConstants());
+giveMeStateOptions();

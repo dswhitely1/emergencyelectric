@@ -82,4 +82,5 @@ export default {
 	FETCH_APPLICATIONS                      : 'FETCH_APPLICATIONS',
 	ADMIN_PAGE_CHANGE                       : 'ADMIN_PAGE_CHANGE',
 	VIEW_APPLICATION                        : 'VIEW_APPLICATION',
+	TEST_APPLICATION                        : 'TEST_APPLICATION',
 };

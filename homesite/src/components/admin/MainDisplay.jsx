@@ -12,7 +12,8 @@ class MainDisplay extends Component {
 				{
 					page === '0' ? <MessageList deleteMsgButton={this.props.deleteMsgButton} /> :
 					page === '1' ? <ApplicationList /> :
-					<DisplayApplication />}
+					page === '2' ? <DisplayApplication /> :
+					null}
 			</div>
 		);
 	}

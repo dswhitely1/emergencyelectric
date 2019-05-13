@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-const baseUrl = process.env.PUBLIC_URL;
+
 const ApplicationCard = props => {
 	const { id, firstName, lastName, phone } = props.apps;
 	const { viewApplication } = props;

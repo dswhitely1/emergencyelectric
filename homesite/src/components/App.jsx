@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from './HomePage';
 import ApplicationPage from './ApplicationPage';
-import Button from 'react-bootstrap/Button';
 
-import DisplayApplication from './application/DisplayApplication';
 import AdminHomePage from './admin/AdminHomePage';
 const baseUrl = process.env.PUBLIC_URL;
 

@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 		.select('*')
 		.from('messages')
 		.then(rows => {
-			console.log(rows.length);
+			console.log(rows);
 			res.status(200).json(rows);
 		})
 		.catch(err => {

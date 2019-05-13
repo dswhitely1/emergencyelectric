@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Navigation from '../admin/Navigation';
 import MainDisplay from './MainDisplay';
-import { fetchMessages, deleteMessage, fetchApplications } from '../../actions';
+import { fetchMessages, deleteMessage, fetchApplications, sendTestResponse } from '../../actions';
 import Footer from './Footer';
 class AdminHomePage extends Component {
 	componentWillMount() {
@@ -29,4 +29,6 @@ const mapStateToProps = state => {
 	return { msg: state.messageList, apps: state.applicationList };
 };
 
-export default connect(mapStateToProps, { fetchMessages, deleteMessage, fetchApplications })(AdminHomePage);
+export default connect(mapStateToProps, { fetchMessages, deleteMessage, fetchApplications, sendTestResponse })(
+	AdminHomePage,
+);

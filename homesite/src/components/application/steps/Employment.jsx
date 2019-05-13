@@ -38,16 +38,16 @@ class Employment extends Component {
 		}
 		this.props.employmentFormValidation(true);
 		const sendResponse = {
-			parentid          : this.props.msgDisplay.appId,
-			companyName       : companyName,
-			companyPhone      : companyPhone,
-			companyCitySt     : companyCitySt,
-			companySupervisor : companySupervisor,
-			startDate         : startDate,
-			endDate           : endDate,
-			reasonLeaving     : reasonLeaving,
-			contactYes        : contactYes,
-			contactNo         : contactNo,
+			parentid          : Number(this.props.msgDisplay.appId),
+			companyname       : companyName,
+			companyphone      : companyPhone,
+			companycityst     : companyCitySt,
+			companysupervisor : companySupervisor,
+			startdate         : startDate,
+			enddate           : endDate,
+			reasonleaving     : reasonLeaving,
+			contactyes        : contactYes,
+			contactno         : contactNo,
 		};
 		if (form.checkValidity()) {
 			this.props.sendEmploymentData(sendResponse);
@@ -97,9 +97,7 @@ class Employment extends Component {
 						onSubmit={e => this.handleSubmit(e)}>
 						<h3 className='mb-1'>Employment Application</h3>
 						<h2 className='mb-2'>Employment Data</h2>
-						<p className='lead'>
-							Please provide at least the past 3 years of employment
-						</p>
+						<p className='lead'>Please provide at least the past 3 years of employment</p>
 						<Form.Row>
 							<Form.Group as={Col} md={8}>
 								<Form.Control
@@ -110,9 +108,7 @@ class Employment extends Component {
 									value={companyName}
 									onChange={this.onInputChange}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Form.Group>
 							<Form.Group as={Col} md={4}>
 								<Form.Control
@@ -124,9 +120,7 @@ class Employment extends Component {
 									value={companyPhone}
 									onChange={this.onInputChange}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Form.Group>
 						</Form.Row>
 						<Form.Row>
@@ -139,9 +133,7 @@ class Employment extends Component {
 									value={companyCitySt}
 									onChange={this.onInputChange}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Form.Group>
 							<Form.Group as={Col} md={6}>
 								<Form.Control
@@ -152,9 +144,7 @@ class Employment extends Component {
 									value={companySupervisor}
 									onChange={this.onInputChange}
 								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Form.Group>
 						</Form.Row>
 						<Form.Group as={Row}>
@@ -162,31 +152,15 @@ class Employment extends Component {
 								Date Started
 							</Form.Label>
 							<Col md={3}>
-								<Form.Control
-									type='date'
-									id='startDate'
-									required
-									value={startDate}
-									onChange={this.onInputChange}
-								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control type='date' id='startDate' required value={startDate} onChange={this.onInputChange} />
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Col>
 							<Form.Label column md={3}>
 								Date Ended
 							</Form.Label>
 							<Col md={3}>
-								<Form.Control
-									type='date'
-									id='endDate'
-									required
-									value={endDate}
-									onChange={this.onInputChange}
-								/>
-								<Form.Control.Feedback type='invalid'>
-									Required
-								</Form.Control.Feedback>
+								<Form.Control type='date' id='endDate' required value={endDate} onChange={this.onInputChange} />
+								<Form.Control.Feedback type='invalid'>Required</Form.Control.Feedback>
 							</Col>
 						</Form.Group>
 						<Form.Group as={Row}>
@@ -212,40 +186,20 @@ class Employment extends Component {
 									checked={contactYes}
 									onChange={this.onCheckChange}
 								/>
-								<Form.Check
-									custom
-									inline
-									label='No'
-									id='contactNo'
-									checked={contactNo}
-									onChange={this.onCheckChange}
-								/>
+								<Form.Check custom inline label='No' id='contactNo' checked={contactNo} onChange={this.onCheckChange} />
 							</Col>
 						</Form.Group>
 						<Form.Row className='mb-2'>
-							<p className='lead'>
-								Click Add Employment to add Previous Employers
-							</p>
-							<Button
-								type='button'
-								variant='outline-info'
-								className='ml-auto'
-								onClick={this.handleSubmit}>
+							<p className='lead'>Click Add Employment to add Previous Employers</p>
+							<Button type='button' variant='outline-info' className='ml-auto' onClick={this.handleSubmit}>
 								Add Employers
 							</Button>
 						</Form.Row>
 						<Form.Row>
-							<Button
-								type='button'
-								variant='outline-info'
-								onClick={this.onPrevPageClick}>
+							<Button type='button' variant='outline-info' onClick={this.onPrevPageClick}>
 								Personal Data
 							</Button>
-							<Button
-								onClick={this.onNextPageClick}
-								type='button'
-								variant='outline-info'
-								className='ml-auto'>
+							<Button onClick={this.onNextPageClick} type='button' variant='outline-info' className='ml-auto'>
 								Education
 							</Button>
 						</Form.Row>

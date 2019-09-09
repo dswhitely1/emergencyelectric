@@ -5,8 +5,8 @@ import PersonalData from '../application/steps-reduxform/PersonalData';
 import Introduction2 from './steps/Introduction2';
 import MessageDisplay from '../index/MessageDisplay';
 import Employment from './steps-reduxform/Employment';
-import Education from './steps/Education';
-import References from './steps/References';
+import Education from './steps-reduxform/Education';
+import References from './steps-reduxform/References';
 import FinalPage from './steps/FinalPage';
 import ThankYou from './steps/ThankYou';
 import { sendPersonalDataDB1, nextApplicationPage } from '../../actions';
@@ -36,9 +36,9 @@ class Application extends Component {
 				) : page === 3 ? (
 					<Employment onSubmit={this.onEmploymentDataSubmit} />
 				) : page === 4 ? (
-					<Education />
+					<Education onSubmit={this.onEmploymentDataSubmit} />
 				) : page === 5 ? (
-					<References />
+					<References onSubmit={this.onEmploymentDataSubmit} />
 				) : page === 6 ? (
 					<FinalPage />
 				) : (

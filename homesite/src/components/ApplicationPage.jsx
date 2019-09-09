@@ -20,7 +20,7 @@ class ApplicationPage extends Component {
 	}
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	return { msgDisplay: state.messageDisplay };
 };
 export default connect(mapStateToProps, { showMessageDisplay })(ApplicationPage);
